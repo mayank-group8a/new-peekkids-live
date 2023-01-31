@@ -1,0 +1,147 @@
+
+.quotes-bar .multicolumn-list__item .multicolumn-card{
+    margin-top: 20px;
+}
+.quotes-bar .multicolumn-list__item .rte p{
+    font-weight: normal;
+    /* font-size: 22px; */
+    line-height: 34px;
+    color: rgb(var(--gradient-background));
+}
+.quotes-bar .multicolumn-list__item .multicolumn-card__info h3 {
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgb(var(--color-base-accent-1));
+    margin: 0;
+    text-transform: uppercase;
+}
+.quotes-bar .multicolumn-list__item .multicolumn-card__info em {
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgb(var(--gradient-background));
+    margin: 0;
+    font-style: normal;
+}
+.career-quote-slider .quotes-bar.slider button.slick-arrow span {
+    background: rgb(var(--color-base-accent-2));
+}
+.career-quote-slider .quotes-bar.slider button.slick-arrow.slick-prev span:after {
+    border-color: transparent rgb(var(--color-base-accent-2)) transparent transparent;
+}
+.career-quote-slider .quotes-bar.slider button.slick-arrow.slick-next span:after {
+    border-color: transparent transparent transparent rgb(var(--color-base-accent-2));
+}
+.quotes .title-wrapper-with-link
+{
+    flex-direction: column;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.quotes .quotes-image img,
+.quotes .quotes-bar  img
+{
+    display: block;
+    margin:0px auto;
+         max-width: 50px;
+        height: auto;
+}
+.quotes .title-wrapper-with-link .hr
+{
+    width:140px;
+    margin: 20px auto;
+}
+.career-quote-slider .single-quote.slider li 
+{
+    list-style-type: none;
+    max-width: 80%;
+    width:100%;
+    margin:0px auto;
+}
+@media(max-width: 1600px){
+    .quotes-bar .multicolumn-list__item .rte p{
+        /* font-style: 22px; */
+        justify-content: center;
+    }
+    .quotes-bar .multicolumn-list__item .multicolumn-card__info h3{
+    }
+    .quotes-bar .multicolumn-list__item .multicolumn-card__info em{
+    }
+}
+.quotes-bar.slider button.slick-arrow.slick-next:hover span{
+    color:rgb(var(--color-base-accent-1));
+    background-color: currentColor;
+}
+.quotes-bar.slider button.slick-arrow.slick-prev:hover span{
+    background-color: currentColor;
+    color:rgb(var(--color-base-accent-1));
+}
+.quotes-bar.slider button.slick-arrow.slick-prev:hover span:after{
+    border-right-color: currentColor;
+}
+.quotes-bar.slider button.slick-arrow.slick-next:hover span:after{
+    border-left-color: currentColor;
+}
+.quotes-bar.slider button.slick-arrow{
+/*         bottom:  100px; */
+}
+.quotes-bar.slider button.slick-arrow.slick-prev {
+    left: auto;
+    right: 60px;
+}
+.quotes-bar.slider button.slick-arrow.slick-next {
+    left: auto;
+    right: 0;
+}
+@media(max-width: 1199px) {
+.quotes-bar .multicolumn-list__item .rte p {
+/*     font-size: 20px;
+    line-height: 42px; */
+}
+}
+@media(max-width: 991px) {
+    .contactus-main .contactus-row .contactus-iteam.contactus-images {
+        display: none;
+    }
+    .contactus-main .contactus-row .contactus-iteam.contactus-info {
+        width: 100%;
+    }
+ 
+
+    .career-quote-slider .quotes-bar .multicolumn-list__item .rte p {
+        /* font-size: 20px; */
+        line-height: 32px;
+    }
+  #shopify-section-template--14320638754931__164017325325cb8738  .quotes-bar.slider button.slick-arrow.slick-prev {
+    left: 8px !important;
+	}
+    #shopify-section-template--14320638754931__164017325325cb8738 .quotes-bar.slider button.slick-arrow.slick-next {
+    	left: 60px !important;
+	}
+ 	 #shopify-section-template--14320638754931__164017325325cb8738 .quotes-bar .multicolumn-list__item .multicolumn-card .multicolumn-card__info {
+    	text-align: center !important;
+	 }
+    #shopify-section-template--14320638754931__164017325325cb8738 .quotes-bar .multicolumn-list__item .multicolumn-card .multicolumn-card__info
+    {
+      margin-left:0px;
+    }
+}
+@media(max-width: 767px) {
+.quotes-bar .multicolumn-list__item .multicolumn-card__info h3 {
+    font-size: 22px;
+    line-height: 24px;
+}
+.quotes-bar .multicolumn-list__item .multicolumn-card__info em {
+    font-size: 16px;
+    line-height: 19px;
+
+}
+.career-quote-slider .quotes-bar.slider .multicolumn-list__item .multicolumn-card {
+    align-items: center;
+}
+}

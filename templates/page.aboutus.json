@@ -1,0 +1,190 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1647507177d3a846a1": {
+      "type": "custom-image-banner",
+      "blocks": {
+        "16475071779fd0d284-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<span class=\"highlight\">About<\/span> Us",
+            "heading_size": "large"
+          }
+        },
+        "16475071779fd0d284-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template."
+          }
+        },
+        "16475071779fd0d284-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "16475071779fd0d284-0",
+        "16475071779fd0d284-1",
+        "16475071779fd0d284-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20201101_PEEK_ELENAFONG_1461.png",
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "content_horizontal": "left",
+        "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 60,
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "1647507368e7049d75": {
+      "type": "section-breadcrumb",
+      "settings": {
+      }
+    },
+    "1647507284c22a6ba9": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "1647507284513df8d4-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHO WE ARE",
+            "heading_color": "#0f716d"
+          }
+        },
+        "1647507284513df8d4-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Peek Kids designs unique clothing for the little ones, so that they can connect\nwith the world in comfort and style. We are passionate about building on the Peek Kids\nvalues we’ve stood for since our founding in 2006. Kindness. Humility. Bravery. Joy.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "1647507284513df8d4-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1647507284513df8d4-0",
+        "1647507284513df8d4-1",
+        "1647507284513df8d4-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20190711_PEEK_TEDDY_141_grande_c8a06c58-de0c-4577-b39c-9b0819c96f6a.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    },
+    "16475074004a29dc02": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "164750740064e5ead2-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHAT WE DO",
+            "heading_color": "#0f716d"
+          }
+        },
+        "164750740064e5ead2-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Peek Kids, we love creating fun clothes in comfortable shapes for kids to play in. Our team understands the needs of the everyday kid. When designing each\npiece of clothing, we lead with our hearts, act seriously funny, mix in nostalgia for the magic that is childhood, and care for the world and everything that is part of it. <\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "164750740064e5ead2-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "164750740064e5ead2-0",
+        "164750740064e5ead2-1",
+        "164750740064e5ead2-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20190711_PEEK_SIMONS_065_sml_1024x1024_a3f4ab03-7c41-40de-9e32-fe12cc6dbd07.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "text_first",
+        "full_width": true,
+        "bg_color": "#f7f7f7"
+      }
+    },
+    "164750753132307200": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "16475075318b9ecfcd-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHERE WE'RE GOING",
+            "heading_color": "#0f716d"
+          }
+        },
+        "16475075318b9ecfcd-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We stand for values such as inclusion, creativity, and education, which we express through\nfinely designed, high-quality clothing at attainable prices, sold on PeekKids.com and\nthrough better retailers worldwide. Like all kids, Peek Kids is growing and learning. We\nappreciate your staying with us as we grow, and we’re genuinely excited about what’s coming next. We’re planning for our future and designing upcoming collections, and we hope you'll join us on our journey. Together with you, we continue to celebrate kids, and all of the little everyday experiences of play, fun, discovery, and joy!<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "16475075318b9ecfcd-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16475075318b9ecfcd-0",
+        "16475075318b9ecfcd-1",
+        "16475075318b9ecfcd-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/PeekKids_About_us_last_grande_f96d7cf0-afd2-40ee-aad3-db74df0d528b.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1647507177d3a846a1",
+    "1647507368e7049d75",
+    "1647507284c22a6ba9",
+    "16475074004a29dc02",
+    "164750753132307200"
+  ]
+}

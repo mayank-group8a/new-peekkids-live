@@ -1,0 +1,69 @@
+.announcement-bar {
+  background-color: rgb(var(--color-base-accent-2));
+}
+@media(min-width: 1200px){
+  .announcement-bar #announcement-bar{
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.announcement-bar__message-text  .announce-text {
+    color: var(--color-header-background);
+}
+  .announcement-bar__message-text .announce-text{
+    padding: 3px 0 5px;
+    line-height: 1.8;
+    display: block;
+    font-size: 15px;
+  }
+  .announcement-bar__message-text:not(.slick-slide):nth-of-type(1n+2){
+    display: none;
+  }
+  #shopify-section-announcement-bar button.slick-arrow{
+    transition: all 0.3s linear;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 20px;
+    height: 24px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transform: none;
+    color:rgb(var(--color-background));
+  }
+  #shopify-section-announcement-bar button.slick-arrow:before{
+    display: none;
+  }
+  #shopify-section-announcement-bar button.slick-arrow.slick-prev{
+    left: 40px;
+  }
+  #shopify-section-announcement-bar button.slick-arrow.slick-next{
+    right: 40px;
+  }
+  #shopify-section-announcement-bar button.slick-arrow.slick-prev,
+  #shopify-section-announcement-bar button.slick-arrow.slick-prev{
+    left: 10px;
+    opacity: 1;
+    visibility: visible;
+  }
+  #shopify-section-announcement-bar button.slick-arrow.slick-next,
+  #shopify-section-announcement-bar button.slick-arrow.slick-next{
+    right: 10px;
+    opacity: 1;
+    visibility: visible;
+  }
+@media(max-width: 767px){
+#announcement-bar .slick-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+}

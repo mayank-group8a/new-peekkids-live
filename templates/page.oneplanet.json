@@ -1,0 +1,231 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1647500766790893fb": {
+      "type": "custom-image-banner",
+      "blocks": {
+        "1647500766d06b981c-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "1% For <span class=\"highlight\">The Planet<\/span>",
+            "heading_size": "large"
+          }
+        },
+        "1647500766d06b981c-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template."
+          }
+        },
+        "1647500766d06b981c-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1647500766d06b981c-0",
+        "1647500766d06b981c-1",
+        "1647500766d06b981c-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HN5A0030_1.png",
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "content_horizontal": "left",
+        "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 60,
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "16475079086d2dbd49": {
+      "type": "section-breadcrumb",
+      "settings": {
+      }
+    },
+    "16473398418142bdeb": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "16473398406fe4239f-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "We are proud to be a part of 1% For The Planet",
+            "heading_color": "#e48a59"
+          }
+        },
+        "16473398406fe4239f-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>AT PEEK KIDS, WE CARE ABOUT GIVING BACK AND WE KNOW YOU DO TOO!<br><br>We are proud to be a part of 1% For The Planet, a global organization, leading a network of businesses, nonprofits, and individuals working together for a healthy planet. As a member of 1% For The Planet, we're committed to donating 1% of our online sales to environmental non-profit organizations.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "16473398406fe4239f-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16473398406fe4239f-0",
+        "16473398406fe4239f-1",
+        "16473398406fe4239f-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Peek-1Percent_2_1024x1024_e2c569f7-81f3-42fb-944e-d96f4ffceb04.png",
+        "height": "adapt",
+        "color_scheme": "background-2",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    },
+    "16475147318de3defa": {
+      "type": "small-image-with-large-text",
+      "blocks": {
+        "164751473103952262-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_color": "#e48a59"
+          }
+        },
+        "164751473103952262-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\"The intent of 1% for the Planet is to help fund diverse environmental organizations so that collectively they can be a more powerful  source in solving the world’s problems.\"<\/p>\n\n<h3>YVON CHOUINARD<\/h3>\n<p>Founder of 1% for the Planet From his book<\/p>\n<p>“LET MY PEOPLE GO SURFING\"<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "164751473103952262-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "164751473103952262-0",
+        "164751473103952262-1",
+        "164751473103952262-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Peek_1Percent_3_grande_4a260bab-8372-42ff-9bff-df236ee12850.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "text_first",
+        "full_width": true,
+        "bg_color": "#f7f7f7"
+      }
+    },
+    "1647340340b403a15c": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "1647340340167bbe64-0": {
+          "type": "heading",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/Image_1.png",
+            "heading": "PEEK KIDS IS A  PROUD MEMBER OF 1% FOR THE PLANET",
+            "heading_color": "#e48a59"
+          }
+        },
+        "1647340340167bbe64-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With every purchase from us, you will be giving back!<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "1647340340167bbe64-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1647340340167bbe64-0",
+        "1647340340167bbe64-1",
+        "1647340340167bbe64-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Image_2.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    },
+    "1647502451ab488dc8": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "1647502451bf26c0b0-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_color": "#e48a59"
+          }
+        },
+        "1647502451bf26c0b0-1": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>1% For The Planet<\/h3>\n<p>As a member of 1% For The Planet, we’re committed to donating one percent of our online sales to environmental nonprofit organizations.<\/p>\n\n<h3>Now, is the time to act<\/h3>\n<p>By joining 1% For The Planet, we’re taking an essential step\ntoward greater environmental responsibility. Now, with every purchase from PeekKids.com, we will be consistently contributing toward a healthier Earth — together.<\/p>\n\n<h3>Making a difference<\/h3>\n<p>To date, 1% For The Planet members have contributed over $250 million. We’re giving to nonprofits on the frontlines of environmental issues.<\/p>\n\n<h3>Moving forward<\/h3>\n<p>Since our founding in 2006, Peek Kids has always been passionate about making a better world for our kids. Now, as members of 1% For The Planet — together with you — we can make a real difference.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "1647502451bf26c0b0-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "1647502451bf26c0b0-0",
+        "1647502451bf26c0b0-1",
+        "1647502451bf26c0b0-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20201101_PEEK_ELENAFONG_146_7b09c1d6-26c8-4ca9-8829-f0b29826f020.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "text_first",
+        "full_width": true,
+        "bg_color": "#f7f7f7"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1647500766790893fb",
+    "16475079086d2dbd49",
+    "16473398418142bdeb",
+    "16475147318de3defa",
+    "1647340340b403a15c",
+    "1647502451ab488dc8"
+  ]
+}

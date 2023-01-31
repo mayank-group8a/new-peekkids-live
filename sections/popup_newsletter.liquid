@@ -1,0 +1,492 @@
+<script src="{{ 'popup_newsletter.js' | asset_url }}" defer="defer"></script>
+{% if section.settings.display_popup_newsletter != 'disabled' %}
+{% if section.settings.home_page_only == false or request.page_type == 'index' %}
+<style>
+    div#newsletterModalContent {
+        width: 90%;
+        max-width: {{ section.settings.popupSize | append: 'px'}};
+        {{ section.settings.modalPadding | append: 'px' | prepend: 'padding:' }};
+        background: {{ section.settings.pop_up_newsletter_bg }};
+        {% if section.settings.bg_image != blank %}
+            background-image: url({{ section.settings.bg_image | img_url: 'master' }});
+            background-size: 100% auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        {% endif %}
+    }
+    {% if section.settings.mobile_bg_image != blank %}@media only screen and (max-width: 767px) {div#newsletterModalContent {background-image: url({{ section.settings.mobile_bg_image | img_url: 'master' }});}}{% endif %}
+    {% capture logo_alt %}{{ section.settings.LogoImg_img.alt | default: shop.name }}{% endcapture %}
+    {% if section.settings.show_overlay %}
+        {% case section.settings.overlay_opacity %}{% when 100 %}{%- assign overlayOpacity = '1' -%}{% else %}{%- assign overlayOpacity =  section.settings.overlay_opacity | prepend: '0.' -%}{% endcase %}
+        div#newsletterModalContent .newsletterModalContent_overlay {background-color:{{ section.settings.overlay_color }};height: 100%;width: 100%;display: block;position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 0;opacity: {{ overlayOpacity }};}
+    {% endif %}
+    div#newsletterModalContent .newsletterContent {position: relative;z-index: 1;}
+    {% if section.settings.LogoImg_img != blank %}div#newsletterModalContent .logoWrap {max-width: {{ section.settings.logo_max_width | escape }}px;display: inline-block;}{% endif %}
+    div#newsletterModalContent .image-wrap {position: relative;}
+    div#newsletterModalContent .image-wrap img {display: block;max-height: none;margin: auto;width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
+    div#newsletterModalContent .rte  {margin-bottom: 15px;}
+    div#newsletterModalContent .newsletter-title  {margin-bottom: 15px;}
+    div#newsletterModalContent .newsletter-title h2.title {margin-top: 0px;margin-bottom: 0px;color: {{ section.settings.popup_TitleColor }};}
+    div#newsletterModalContent .newsletter-title h5{margin-top: 0;}
+    div#newsletterModalContent .newsletter-title .textMessage {color: {{ section.settings.popup_Subtitle }};}
+    div#newsletterModalContent .popup__newsletter .rte {color: {{ section.settings.popup_textColor }};}
+    div#newsletterModalContent .newsletterContent.static-align .popup__newsletter {margin-top: 25px;}
+    div#newsletterModalContent .newsletterContent.static-align .bannerImg{margin-bottom: 25px;}
+    div#newsletterModalContent .newsletterContent.static-align .popup__newsletter {margin-top: 25px;}
+    div#newsletterModalContent .newsletterContent.left-align .bannerImg,
+    div#newsletterModalContent .newsletterContent.right-align .bannerImg {width: {{ section.settings.banner_width}}%;}
+    div#newsletterModalContent .newsletterContent.left-align .popup__newsletter,
+    div#newsletterModalContent .newsletterContent.right-align .popup__newsletter {
+        flex: 1 1 calc(100% - {{ section.settings.banner_width}}%);
+        padding: {{ section.settings.formPadding}}px;
+    }
+    
+    div#newsletterModalContent .newsletterContent.left-align,
+    div#newsletterModalContent .newsletterContent.right-align{
+        display: flex;align-items: center;
+    }
+    div#newsletterModalContent .input-group {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    div#newsletterModalContent button.btn--link{margin-top: 15px;}
+    div#newsletterModalContent .input-group.style1{flex-shrink: 1;width: auto;}
+    div#newsletterModalContent .input-group.style1 .field__input{flex-shrink: 1;width: auto;}
+    div#newsletterModalContent .input-group.style1 {flex: 1 1 100%;width: 100%;}
+    div#newsletterModalContent .input-group.style2 .input-group__btn{flex-grow: 0;}
+    div#newsletterModalContent .input-group.style2 {flex: 1 1 100%;width: 100%;}
+    div#newsletterModalContent .input-group.style2 .input-group__field{flex: 1 1 100%;width: 100%;}
+    div#newsletterModalContent .input-group.style2 .input-group__btn{flex-grow: 0;margin-top: 20px;}
+    div#newsletterModalContent .input-group.style2 button {margin:  0 0;}
+    div#newsletterModalContent .input-group.style3 {flex: 1 1 100%;width: 100%;}
+    div#newsletterModalContent .input-group.style3 .input-group__field{flex: 1 1 100%;width: 100%;}
+    div#newsletterModalContent .input-group.style3 .input-group__btn {flex-grow: 1;}
+    div#newsletterModalContent .input-group.style3 .input-group__btn .newsletter__button {width: 100%;margin: 20px 0 0;}
+    div#newsletterModalContent .input-group.style3 button {margin:  0 0;}
+</style>
+
+{%- capture titleBox -%}
+    <div class="newsletter-title">
+
+        {% if section.settings.LogoImg_img %}
+        <div class="logoWrap">
+                    {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+                    <img srcset="{{ section.settings.LogoImg_img | img_url: image_size }} 1x, {{ section.settings.LogoImg_img | img_url: image_size, scale: 2 }} 2x"
+                    src="{{ section.settings.LogoImg_img | img_url: image_size }}"
+                    loading="lazy"
+                    class="header__heading-logo"
+                    width="{{ section.settings.LogoImg_img.width }}"
+                    height="{{ section.settings.LogoImg_img.height }}"
+                    alt="{{ section.settings.LogoImg_img.alt | default: shop.name | escape }}"
+                    >
+                    <!-- style="max-width: {{ section.settings.logo_max_width }}px" -->
+                
+                </div>
+            {% endif %}
+        {% if section.settings.popup_newsletter_title != blank %}<h2 class="title">{{ section.settings.popup_newsletter_title }}</h2>{% endif %}
+        {% if section.settings.popup_newsletter_message != blank %}{{- section.settings.popup_newsletter_message | replace: '<p>', '<h5>' | replace: '</p>', '</h5>' -}}{% endif %}
+    </div>
+
+{%- endcapture -%}
+
+{%- capture newsLetterBox -%}
+    {% if section.settings.popup_text != blank %}
+        <div class="rte">
+        {{ section.settings.popup_text }}
+        </div>
+    {% endif %}
+    {% if section.settings.newsletter_form_action != blank %}
+        <form action="{{ section.settings.newsletter_form_action }}" method="post"  name="mc-embedded-subscribe-form" target="_blank" class="mc-embedded-subscribe-form">
+            <div class="input-group {{ section.settings.newsletterStyle }}{% if form.errors %} input-group--error{% endif %}">
+                <input type="email" name="EMAIL" id="{{ formId }}-email" class="field__input input-group__field newsletter__input mail {% if form.errors %} input--error{% endif %}" value="{{ form.email }}" placeholder="{{ 'newsletter.label' | t }}" aria-label="{{ 'newsletter.label' | t }}" aria-required="true" required autocorrect="off" autocapitalize="off" {% if form.errors %} aria-invalid="true" aria-describedby="{{ formId }}-email-error" data-form-status {% endif %}>
+                <span class="input-group__btn"><button type="submit" class="button btn newsletter-form__button newsletter__button newsletter__submit" name="commit" ><span class="newsletter__submit-text--large">{{ 'newsletter.button_label' | t }}</span></button></span>
+            </div>
+        </form>
+    {% else %}
+        {%- assign formId = 'Contactpopup' -%}
+        {% form 'customer', id: formId %}
+            {%- if form.posted_successfully? -%}
+                <p class="form-message form-message--success" tabindex="-1" data-form-status>{{ 'general.newsletter_form.confirmation' | t }}</p>
+            {%- endif -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="input-group {{ section.settings.newsletterStyle }}{% if form.errors %} input-group--error{% endif %}">
+                <input type="email" name="contact[email]" id="{{ formId }}-email" class="field__input input-group__field newsletter__input{% if form.errors %} input--error{% endif %}" value="{{ form.email }}" placeholder="{{ 'newsletter.label' | t }}" aria-label="{{ 'newsletter.label' | t }}" aria-required="true" required autocorrect="off" autocapitalize="off" {% if form.errors %} aria-invalid="true" aria-describedby="{{ formId }}-email-error" data-form-status {% endif %}>
+                <span class="input-group__btn"><button type="submit" class="button btn newsletter-form__button newsletter__button newsletter__submit" name="commit" ><span class="newsletter__submit-text--large">{{ 'newsletter.button_label' | t }}</span></button></span>
+            </div>
+            {% if form.errors contains 'email' %}
+                <span id="{{ formId }}-email-error" class="input-error-message">
+                <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                {% include 'icon-error' %}
+                <span class="popup__newsletter-error">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                </span>
+            {% endif %}
+        {% endform %}
+    {% endif %}
+    {% if section.settings.close_text != blank %}
+        <button type="button" class="btn btn--link btn-close facets__reset link underlined-link">{{ section.settings.close_text }}</button>
+    {% endif %}
+{%- endcapture -%}
+{%- capture imgContent -%}
+{%- if section.settings.popup_newsletter_img -%}
+    
+<div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.popup_newsletter_img.aspect_ratio }}%;">
+    <img
+    srcset="{%- if section.settings.popup_newsletter_img.width >= 375 -%}{{ section.settings.popup_newsletter_img | img_url: '375x' }} 375w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 750 -%}{{ section.settings.popup_newsletter_img | img_url: '750x' }} 750w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 1100 -%}{{ section.settings.popup_newsletter_img | img_url: '1100x' }} 1100w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 1500 -%}{{ section.settings.popup_newsletter_img | img_url: '1500x' }} 1500w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 1780 -%}{{ section.settings.popup_newsletter_img | img_url: '1780x' }} 1780w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 2000 -%}{{ section.settings.popup_newsletter_img | img_url: '2000x' }} 2000w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 3000 -%}{{ section.settings.popup_newsletter_img | img_url: '3000x' }} 3000w,{%- endif -%}
+      {%- if section.settings.popup_newsletter_img.width >= 3840 -%}{{ section.settings.popup_newsletter_img | img_url: '3840x' }} 3840w,{%- endif -%}"
+    sizes="{% if section.settings.popup_newsletter_img_2 != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.popup_newsletter_img_2 != blank %}50vw{% else %}100vw{% endif %}"
+    src="{{ section.settings.popup_newsletter_img | img_url: '1500x' }}"
+    loading="lazy"
+    class="header__heading-logo"
+    alt="{{ section.settings.popup_newsletter_img.alt | escape }}"
+    width="{{ section.settings.popup_newsletter_img.width }}"
+    height="{{ section.settings.popup_newsletter_img.width | divided_by: section.settings.popup_newsletter_img.aspect_ratio }}"
+  >
+    
+</div>
+{%- endif -%}
+{%- endcapture -%}
+{%- assign staticImg = '' -%}
+{%- assign leftImg = '' -%}
+{%- assign rightImg = '' -%}
+{%- case section.settings.display_popup_imgstyle -%}
+    {%- when 'static' -%}
+        {%- assign imgAlign = 'static-align' -%}
+        {%- assign staticImg = imgContent -%}
+    {%- when 'leftSide' -%}
+        {%- assign imgAlign = 'left-align' -%}
+        {%- assign leftImg = imgContent -%}
+    {%- when 'rightSide' -%}
+        {%- assign imgAlign = 'right-align' -%}
+        {%- assign rightImg = imgContent -%}
+{%- endcase -%}
+
+<popup-newsletter class="newsletterwrapper modi-{{ section.settings.display_popup_newsletter }}" style="display: none;" data-display-mode="{{ section.settings.display_popup_newsletter }}" data-expire="{{ section.settings.popup_days }}" data-delay="{{ section.settings.popup_seconds }}">
+    <div class="newsletter-content center" id="newsletterModalContent">
+        <div class="newsletterModalContent_overlay"></div>
+        <div class="newsletterContent {{ imgAlign }}">
+            {%- if staticImg != blank and section.settings.headingPosition == 'above' -%}{{ titleBox }}{%- endif -%}
+            {%- if staticImg != blank -%}<div class="bannerImg {{ imgAlign }}">{{ staticImg }}</div>{%- endif -%}
+            {%- if staticImg != blank and section.settings.headingPosition == 'bellow' -%}{{ titleBox }}{%- endif -%}
+            
+            
+            {% if leftImg != blank %}<div class="bannerImg {{ imgAlign }}">{{ imgContent }}</div>{% endif %}
+            {%- if newsLetterBox != blank -%}<div class="popup__newsletter">{%- if staticImg == blank -%}{{ titleBox }}{%- endif -%}{{ newsLetterBox }}</div>{%- endif -%}
+            {% if rightImg != blank %}<div class="bannerImg {{ imgAlign }}">{{ rightImg }}</div>{% endif %}
+        </div>
+    </div>
+</popup-newsletter>
+{% endif %}
+{% endif %}
+
+{% schema %}
+    {
+        "name": "Newsletter",
+        "class": "newsletter-modal-section",
+        "settings": [
+        {
+            "type": "select",
+            "id": "display_popup_newsletter",
+            "label": "Display mode",
+            "default": "true",
+            "info": "Test mode displays your popup each time even after dismissing it. Switch to Enabled once you are happy with how your popup looks.",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "Enabled"
+                },
+                {
+                    "value": "testing",
+                    "label": "Test mode"
+                },
+                {
+                    "value": "disabled",
+                    "label": "Disabled"
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "home_page_only",
+            "label": "Home page only",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "logo_max_width",
+            "label": "Custom logo width",
+            "min": 50,
+            "max": 300,
+            "step": 5,
+            "unit": "px",
+            "default": 175
+        },
+        {
+            "type": "image_picker",
+            "id": "LogoImg_img",
+            "label": "Logo Img",
+            "info": "Must be PNG"
+        },
+        {
+            "type": "image_picker",
+            "id": "popup_newsletter_img",
+            "label": "Banner",
+            "info": "Size: 760x500"
+        },
+        {
+            "type": "text",
+            "id": "popup_newsletter_title",
+            "label": "Popup Newsletter Title",
+            "default": "Popup Newsletter Title"
+        },
+        {
+            "type": "richtext",
+            "id": "popup_newsletter_message",
+            "label": "Subtitle",
+            "default": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers.</p>"
+        },
+        {
+            "type": "richtext",
+            "id": "popup_text",
+            "label": "Newsletter Text",
+            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+        },
+        {
+            "type": "text",
+            "id": "close_text",
+            "label": "Close button text",
+            "default": "No thanks"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "range",
+            "id": "popup_seconds",
+            "label": "Delay",
+            "info": "Delay is disabled in theme editor for visibility",
+            "default": 0,
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "unit": "sec"
+        },
+        {
+            "type": "range",
+            "id": "popup_days",
+            "label": "Frequency",
+            "default": 30,
+            "info": "Number of days before a dismissed popup reappears",
+            "min": 2,
+            "max": 30,
+            "step": 1,
+            "unit": "day"
+        },
+        {
+            "type": "select",
+            "id": "popupSize",
+            "label": "Popup Size",
+            "default": "650",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Extra Small"
+                },
+                {
+                    "value": "500",
+                    "label": "Small"
+                },
+                {
+                    "value": "650",
+                    "label": "Medium"
+                },
+                {
+                    "value": "800",
+                    "label": "Large"
+                },
+                {
+                    "value": "1140",
+                    "label": "Extra Large"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "newsletterStyle",
+            "label": "Newsletter Form Style",
+            "default": "style1",
+            "options": [
+                {
+                    "value": "style1",
+                    "label": "Style 1"
+                },
+                {
+                    "value": "style2",
+                    "label": "Style 2"
+                },
+                {
+                    "value": "style3",
+                    "label": "Style 3"
+                }
+            ]
+        },        
+        {
+            "type": "select",
+            "id": "display_popup_imgstyle",
+            "label": "Image Style",
+            "default": "static",
+            "options": [
+                {
+                    "value": "static",
+                    "label": "Static"
+                },
+                {
+                    "value": "leftSide",
+                    "label": "In Left side"
+                },
+                {
+                    "value": "rightSide",
+                    "label": "In Right side"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "banner_width",
+            "label": "Banner width",
+            "min": 20,
+            "max": 80,
+            "step": 10,
+            "unit": "%",
+            "default": 40
+        },
+        {
+            "type": "select",
+            "id": "headingPosition",
+            "label": "Heading Position",
+            "default": "above",
+            "info": "This effect only when Image Style are Static",
+            "options": [
+                {
+                    "value": "above",
+                    "label": "Above the Static Image"
+                },
+                {
+                    "value": "bellow",
+                    "label": "Bellow the Static Image"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "contentAlightment",
+            "label": "Text Alignment",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "pop_up_newsletter_bg",
+            "label": "Popup background Color",
+            "default": "#bfbfbf"
+        },
+        {
+            "type": "image_picker",
+            "id": "bg_image",
+            "label": "Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_bg_image",
+            "label": "Mobile Background Image"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_overlay",
+            "label": "Show Overlay",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "overlay_color",
+            "label": "Overlay colors",
+            "default": "#ffffff"
+        },
+        {
+            "type": "range",
+            "id": "overlay_opacity",
+            "label": "Overlay Opacity",
+            "max": 100,
+            "min": 0,
+            "step": 1,
+            "default": 50
+        },
+        {
+            "type": "color",
+            "id": "popup_TitleColor",
+            "label": "Title Color",
+            "default": "#333"
+        },
+        {
+            "type": "color",
+            "id": "popup_Subtitle",
+            "label": "Subtitle Color",
+            "default": "#000"
+        },
+        {
+            "type": "color",
+            "id": "popup_textColor",
+            "label": "Text Color",
+            "default": "#000"
+        },
+        {
+            "type": "range",
+            "id": "modalPadding",
+            "label": "Modal Padding",
+            "default": 20,
+            "min": 0,
+            "max": 60,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "formPadding",
+            "label": "Form Padding",
+            "default": 15,
+            "min": 0,
+            "max": 50,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "text",
+            "id": "newsletter_form_action",
+            "label": "MailChimp form action URL",
+            "info": "[Find your MailChimp form action URL](https:\/\/docs.shopify.com\/manual\/configuration\/store-customization\/communicating-with-customers\/accounts-and-newsletters\/get-a-mailchimp-form-action-url)."
+        }
+    ]
+}
+{% endschema %}

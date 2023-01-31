@@ -1,0 +1,110 @@
+<div class="product__main">
+<div class="grid product-single">
+    <div class="grid__item product-single__media-group medium-up--one-half">
+      <div class="sliderWrap" data-aspectratio="{{ settings.product_grid_image_size }}">
+        <div class="qv-product-thumb-images"></div>
+        <div class="qv-product-images"></div>
+      </div>
+    </div>
+  <div class="grid__item medium-up--one-half sticky-product-form">
+    <div class="qv-content">
+      <div class="holder">
+        <div class="product-single__meta" data-limoniapps-discountninja-product-handle="{{ product_handle }}">
+          <h1 class="qv-product-title product-single__title"></h1>
+        </div>
+        {% comment %}<h4 class="qv-product-type"></h4>{% endcomment %}
+        <div class="product__price limoniapps-discountninja-productprice">
+          {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+        </div>
+
+
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+
+
+      
+        <div class="qv-add-to-cart">
+          <div class="product_form">
+
+            <div class="product-form__controls-group swatch_options">
+              <div class="qv-product-options" data-variant-swatch="{{ settings.variantSwatch }}" data-variant-swatchimg="{{ settings.variantSwatchImg }}">
+                <div class="product-form__controls-group">
+                  
+                </div>
+                <div class="swatch_options">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="product__inventory hidden" style="color: rgba(var(--color-base-accent-2),1);">Only <span class="count"></span> items in stock!</div>
+            <div class="availableDate hidden" style="color: rgba(var(--color-base-accent-2),1);"></div> 
+    
+            <div class="product-form__input product-form__quantity">
+              <label for="Quantity-qv"><span>Qty</span>
+              <quantity-input class="quantity">
+                <button class="quantity__button no-js-hidden" name="minus" type="button">
+                  <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                  {% render 'icon-minus' %}
+                </button>
+                <input class="qv-quantity quantity__input"
+                    type="number"
+                    name="quantity"
+                    id="Quantity-qv"
+                    min="1"
+                    value="1"
+                    form="product-form-{{ section.id }}"
+                  >
+                <button class="quantity__button no-js-hidden" name="plus" type="button">
+                  <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                  {% render 'icon-plus' %}
+                </button>
+              </quantity-input>
+            </div>
+            <div class="qv-add-to-cart-response"></div>
+            <div class="product-form__button">
+              <button type="submit" name="add" aria-label="Add to cart" class="qv-add-button product-form__submit button button--full-width button--secondary">
+                <span data-add-to-cart-text="">Add to cart</span>
+                <span class="hidden" data-loader>
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg>
+                </span>
+              </button>
+            </div>
+            
+          </div>
+        </div>
+
+        {%- if product.description contains '<!-- split -->' -%}
+          {% assign pretext = product.description | split: "<!-- split -->" | first  %}
+          {% if pretext != blank %}
+            <div id="pretextContent">{{ pretext | strip_html }}</div>
+          {% endif %}
+        {% endif %}
+        <div class="qv-product-description"></div>
+        {% comment %}
+        {% endcomment %}
+
+        <div class="view-productWrap">
+          <a class="view-product" href=""><span>View Full Product Details</span></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<style>
+  {% if settings.swatch_style == 'round' %}
+  .qv-product-options .option-selection-color-swatches .product-single__swatch__label
+  /* , .qv-product-options .product-single__swatch__label:before  */ {
+    border-radius: 100%;
+  }
+  {% else %}
+  .qv-product-options .option-selection-color-swatches .product-single__swatch__label, .qv-product-options .product-single__swatch__label:before {
+    border-radius: 0;
+  }
+  {% endif %}
+  button.btn.qv-add-button.btn--secondary-accent {
+    width: 100%;
+}
+</style>

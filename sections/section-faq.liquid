@@ -1,0 +1,361 @@
+{{ 'section-faq-css.css' | asset_url | stylesheet_tag }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+<div class="wrapper">
+<div class="page-width">
+    <div>
+        <h2 class="h2-heading">{{ section.settings.title }}</h2>
+        <div class="hr"></div>
+    </div>
+    <div class="tab-wrapper">
+		<ul class="tabs">
+            {%- for block in section.blocks -%}
+                <li class="tab-link {% if forloop.index==1 %}active{%endif%}" data-tab="{{forloop.index}}">
+                    {{ block.settings.heading }}
+                </li>
+            {%- endfor -%}
+		</ul>
+    </div>
+    <div class="content-wrapper slider-nav">
+        {%- for block in section.blocks -%}
+            <div id="tab-{{forloop.index}}" class="tab-content {% if forloop.index==1 %}active{%endif%}" >
+                {% if block.settings.image != blank %}
+                    <div class="block-images">
+                        <img
+                           
+                            src="{{ block.settings.image | img_url: '550x' }}"
+                            alt="{{ block.settings.title }}"
+                            
+                            loading="lazy"
+                        >
+                    </div>
+                {% endif %}
+                {% for i in (1..10) %}
+                    {% assign id = "que" | append : i %}
+                    {% if  block.settings[id] !=blank  %}
+                        <div class="faq-block">
+                            <h3>{{ block.settings[id] }}</h3>
+                            {% assign id = "ans" | append : i %}
+                            <p>{{ block.settings[id] }}</p>
+                        </div>
+                    {% endif %}
+                {%- endfor -%} 
+                <div class="clear-flex"></div>                   
+            </div>
+        {%- endfor -%}
+    </div>
+  </div>
+</div>  
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+{{ 'slick.min.js' | asset_url | script_tag }}
+<script>
+    function remclass(element)
+    {
+        document.querySelectorAll('.'+element).forEach(function(userItem) {   
+            userItem.classList.remove('active');
+        });
+    }
+   function alignment(slideno)
+  {
+      document.querySelector('.tabs [data-tab="'+(slideno-1)+'"]')?
+        document.querySelector('.tabs [data-tab="'+(slideno-1)+'"]').style.textAlign="right":
+      document.querySelector('.tabs [data-tab="'+(slideno)+'"]').style.textAlign="center";
+
+      document.querySelector('.tabs [data-tab="'+(slideno)+'"]').style.textAlign="center";
+
+      document.querySelector('.tabs [data-tab="'+(slideno+1)+'"]')?
+       
+        document.querySelector('.tabs [data-tab="'+(slideno+1)+'"]').style.textAlign="left":
+      document.querySelector('.tabs [data-tab="'+(slideno)+'"]').style.textAlign="center";
+    
+     document.querySelector('.tabs [data-tab="'+(slideno)+'"]').nextSibling?
+       document.querySelector('.tabs [data-tab="'+(slideno)+'"]').nextSibling.style.textAlign="left":
+           document.querySelector('.tabs [data-tab="'+(slideno)+'"]').style.textAlign="center";
+//     console.log(document.querySelector('[data-tab="'+(slideno+1)+'"]'));
+  }
+    document.querySelectorAll('.tab-link').forEach(function(userItem) {
+            
+                userItem.addEventListener("click", function() {
+                    remclass('tab-link');
+                    remclass('tab-content');
+                    var tabID = this.dataset.tab;            
+                    this.classList.add('active');
+                    document.querySelector('#tab-'+tabID).classList.add('active');
+    	              var slideno = $(this).data('tab');
+	   				$('.tabs').slick('slickGoTo', slideno - 1);
+                    
+                  	if($(window).width() < 600)
+      				{	
+                  		alignment(tabID);
+                    }
+            });
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+ 			     if($(window).width() < 600)
+      				{	
+                  		alignment(1);
+                    }
+      if($(window).width() < 1024)
+      {
+              $('.tabs').slick({
+              dots: false,
+              infinite: false,
+              speed: 500,
+              slidesToShow: 5,
+              slidesToScroll: 1,
+              autoplay: false,
+              arrows: false,
+          //     asNavFor: '.slider-nav', 
+                centerMode: true,
+                responsive: [
+                  {
+                    breakpoint: 1024,
+                    settings: {
+                      slidesToShow: 3
+                    }
+                  },
+                  {
+                    breakpoint: 600,
+                    settings: {
+                      slidesToShow: 1
+                    }
+                  }
+            ]
+        });
+      }
+      
+//        $('.slider-nav').slick({
+//          slidesToShow: 1,
+//          slidesToScroll: 1,
+//          asNavFor: '.tabs',
+//          dots: true,
+//          focusOnSelect: true
+//        });
+      $('.tabs').on('swipe', function(event, slick, direction){
+                           remclass('tab-link');
+
+                           remclass('tab-content');
+                           var tabID = document.querySelector('.slick-center').dataset.tab;
+                           document.querySelector('.slick-center').classList.add('active');
+                           document.querySelector('#tab-'+tabID).classList.add('active');
+
+                          if($(window).width() < 600)
+                          {	
+                            alignment(tabID);
+                          }
+      });
+
+      
+//        $('[data-tab]').click(function(e) {
+//    			var slideno = $(this).data('tab');
+//    			$('.tab').slick('slickGoTo', slideno - 1);
+//  		});
+      
+      
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Faq tabs",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "frequently asked questions",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.image-banner.blocks.heading.name" ,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+		  "default": "Size Guide",
+          "label": "Heading"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.quotes.blocks.column.settings.image.label",
+            "info":"Recommended Size 730x490"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que1",
+            "default": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 1"
+        },
+        {
+            "type": "richtext",
+            "id": "ans1",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 1"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que2",
+            "default": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 2"
+        },
+        {
+            "type": "richtext",
+            "id": "ans2",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 2"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que3",
+            "default": "Q3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 3"
+        },
+        {
+            "type": "richtext",
+            "id": "ans3",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 3"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que4",
+            "default": "Q4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 4"
+        },
+        {
+            "type": "richtext",
+            "id": "ans4",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 4"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que5",
+            "default": "Q5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 5"
+        },
+        {
+            "type": "richtext",
+            "id": "ans5",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 5"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que6",
+            "default": "Q6: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 6"
+        },
+        {
+            "type": "richtext",
+            "id": "ans6",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 6"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que7",
+            "default": "Q7: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 7"
+        },
+        {
+            "type": "richtext",
+            "id": "ans7",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 7"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que8",
+            "default": "Q8: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 8"
+        },
+        {
+            "type": "richtext",
+            "id": "ans8",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 8"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que9",
+            "default": "Q9: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 9"
+        },
+        {
+            "type": "richtext",
+            "id": "ans9",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 9"
+        },
+        {
+            "type": "header",
+            "content":"Question block"
+        },
+        {
+            "type": "text",
+            "id": "que10",
+            "default": "Q10: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "label": "Question 10"
+        },
+        {
+            "type": "richtext",
+            "id": "ans10",
+            "default": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.</p>",
+            "label": "Answer 10"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Faq tabs"
+    }
+  ]
+}
+{% endschema %}

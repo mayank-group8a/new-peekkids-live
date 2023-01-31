@@ -1,0 +1,556 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
+  {%- style -%}
+    #Banner-{{ section.id }}::before, #Banner-{{ section.id }} .banner__media::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+{% if section.blocks.size > 0 %}
+    <div class="slideshow slider"
+    {%- if section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%}
+    data-slickslider="true"
+    data-slick-autoplay="{{ section.settings.autoplay }}"
+    data-slick-autoplayspeed="{{ section.settings.autorotate_speed | times: 1000 }}"
+    data-slick-infinite="{{ section.settings.sliderLoop }}"
+    data-slick-pauseonhover="{{ section.settings.pauseOnHover }}"
+
+    data-slick-desktop-init="{{ section.settings.desktopInit }}"
+    data-slick-desktop-show="{{ section.settings.desktopShow }}"
+    data-slick-desktop-arrows="{{ section.settings.desktopArrows }}"
+    data-slick-desktop-dots="{{ section.settings.desktopDots }}"
+    data-slick-desktop-vertical="false"
+
+    data-slick-tab-init="{{ section.settings.tabInit }}"
+    data-slick-tab-show="{{ section.settings.tabShow }}"
+    data-slick-tab-arrows="{{ section.settings.tabArrows }}"
+    data-slick-tab-dots="{{ section.settings.tabDots }}"
+    data-slick-tab-vertical="false"
+
+    data-slick-mobile-init="{{ section.settings.mobileInit }}"
+    data-slick-mobile-show="{{ section.settings.mobileShow }}"
+    data-slick-mobile-arrows="{{ section.settings.mobileArrows }}"
+    data-slick-mobile-dots="{{ section.settings.mobileDots }}"
+    data-slick-mobile-vertical="false"
+    {%- endif -%}>
+{%- for block in section.blocks -%}
+<div>
+<div id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
+
+    {% case block.type %}
+        {% when 'video' %}
+        {% if block.settings.video != blank %}
+          <div class="banner__media media{% if block.settings.image == blank and block.settings.image_2 == blank %} placeholder{% endif %}{% if block.settings.image_2 != blank %} banner__media-half{% endif %}">
+           
+            <div class="Video">
+            <div class="mp4Video">
+            <video id="banner-videos" class="slideshow__video" autoplay loop muted playsinline width="100%">
+              <source src="{{ block.settings.video }}" type="video/mp4" id="{{ section.id }}">
+            </video>
+          </div>
+          <button type="button" id="mutee" class="btn mutebutton">
+            {% render 'icon-volume-up' %}
+          </button>
+          <!-- <button type="button" id="play-push" class="btn playpush">
+            {%- render 'icon-play' -%}
+          </button> -->
+        </div>
+
+          </div>
+        {% endif %}
+        {% when 'image' %}
+  {%- if block.settings.image != blank -%}
+    <div class="banner__media media{% if block.settings.image == blank and block.settings.image_2 == blank %} placeholder{% endif %}{% comment %}{% if block.settings.image_2 != blank %} banner__media-half{% endif %}{% endcomment %} desktop-image small-hide">
+      <img
+        srcset="{%- if block.settings.image.width >= 375 -%}{{ block.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}"
+        sizes="{% if block.settings.image_2 != blank and block.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif block.settings.image_2 != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ block.settings.image | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ block.settings.image.alt | escape }}"
+        width="{{ block.settings.image.width }}"
+        height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}"
+        {% comment %}{% if block.settings.image_2 != blank %}class="banner__media-image-half"{% endif %}{% endcomment %}
+      >
+    </div>
+    {% endif %}
+  {%- if block.settings.image_2 != blank -%}
+    <div class="banner__media media{% comment %}{% if block.settings.image != blank %} banner__media-half{% endif %}{% endcomment %} mobile-image medium-hide large-up-hide">
+      <img
+        srcset="{%- if block.settings.image_2.width >= 375 -%}{{ block.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 750 -%}{{ block.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 1100 -%}{{ block.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 1500 -%}{{ block.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 1780 -%}{{ block.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 2000 -%}{{ block.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 3000 -%}{{ block.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if block.settings.image_2.width >= 3840 -%}{{ block.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}"
+        sizes="{% if block.settings.image != blank and block.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif block.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ block.settings.image_2 | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ block.settings.image_2.alt | escape }}"
+        width="{{ block.settings.image_2.width }}"
+        height="{{ block.settings.image_2.width | divided_by: block.settings.image_2.aspect_ratio }}"
+        {% comment %}{% if block.settings.image != blank %}class="banner__media-image-half"{% endif %}{% endcomment %}
+      >
+    </div>
+  {%- endif -%}
+  {% endcase %}
+  <div class="banner__content page-width" style="align-items: {{ block.settings.desktop_text_box_position }};">
+    <div class="banner__box color-{{ block.settings.color_scheme }}">
+
+            <h2 class="banner__heading h1" {{ block.shopify_attributes }}>
+              <span>{{ block.settings.heading | escape }}</span>
+            </h2>
+
+            <div class="banner__text" {{ block.shopify_attributes }}>
+              <span>{{ block.settings.text | escape }}</span>
+            </div>
+
+            <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_link_1 != blank and block.settings.button_label_2 != blank and block.settings.button_link_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.button_label_1 != blank -%}
+                <a{% if block.settings.button_link_1 != blank %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"{% if block.settings.button_link_1 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_1 | escape }}</a>
+              {%- endif -%}
+              {%- if block.settings.button_label_2 != blank -%}
+                <a{% if block.settings.button_link_2 != blank %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"{% if block.settings.button_link_2 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_2 | escape }}</a>
+              {%- endif -%}
+            </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+<style>
+  button#mutedd {
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 0 none;
+    color: #000;
+    top: 20px;
+}
+button#mutee {
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 0 none;
+    color: #000;
+    top: 20px;
+}
+button#play-push {
+    background-color: transparent;
+    border: 0 none;
+    position: absolute;
+    right: 70px;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    background-color: #fff;
+    cursor: pointer;
+}
+button#play-push svg.icon.icon-play {
+    width: 20px;
+    height: 20px;
+    color: gray;
+}
+.mp4Video {
+  position: relative;
+}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.slideshow.name",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "stack_images_on_mobile",
+      "default": true,
+      "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "adapt_height_first_image",
+      "default": false,
+      "label": "t:sections.image-banner.settings.adapt_height_first_image.label"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+  },
+  {
+    "type": "checkbox",
+    "id": "autoplay",
+    "label": "Autoplay",
+    "default": true
+  },
+  {
+    "type": "range",
+    "id": "autorotate_speed",
+    "label": "Change slides every",
+    "max": 10,
+    "min": 1,
+    "step": 1,
+    "unit": " s",
+    "default": 3
+  },
+  {
+      "type": "checkbox",
+      "id": "sliderLoop",
+      "label": "Infinite loop sliding",
+      "default": true
+  },
+  {
+      "type": "checkbox",
+      "id": "pauseOnHover",
+      "label": "Pause on Hover",
+      "default": false
+  },
+  {
+      "type": "header",
+      "content": "Desktop Settings"
+  },
+  {
+      "type": "checkbox",
+      "id": "desktopInit",
+      "label": "Enable Slider in Desktop",
+      "default": true
+  },
+  {
+      "type": "range",
+      "id": "desktopShow",
+      "label": "Show",
+      "default": 4,
+      "max": 8,
+      "min": 1,
+      "step": 1
+  },
+  {
+      "type": "checkbox",
+      "id": "desktopArrows",
+      "label": "Arrows",
+      "default": true
+  },
+  {
+      "type": "checkbox",
+      "id": "desktopDots",
+      "label": "Dots",
+      "default": false
+  },
+  {
+      "type": "header",
+      "content": "Tablet Settings"
+  },
+  {
+      "type": "checkbox",
+      "id": "tabInit",
+      "label": "Enable slider in tablet",
+      "default": true
+  },
+  {
+      "type": "range",
+      "id": "tabShow",
+      "label": "Show",
+      "default": 3,
+      "max": 6,
+      "min": 1,
+      "step": 1
+  },
+  {
+      "type": "checkbox",
+      "id": "tabArrows",
+      "label": "Arrows",
+      "default": true
+  },
+  {
+      "type": "checkbox",
+      "id": "tabDots",
+      "label": "Dots",
+      "default": false
+  },
+  {
+      "type": "header",
+      "content": "Mobile Settings"
+  },
+  {
+      "type": "checkbox",
+      "id": "mobileInit",
+      "label": "Enable slider in Mobile",
+      "default": true
+  },
+  {
+      "type": "range",
+      "id": "mobileShow",
+      "label": "Show",
+      "default": 2,
+      "max": 6,
+      "min": 1,
+      "step": 1
+  },
+  {
+      "type": "checkbox",
+      "id": "mobileArrows",
+      "label": "Arrows",
+      "default": true
+  },
+  {
+      "type": "checkbox",
+      "id": "mobileDots",
+      "label": "Dots",
+      "default": false
+  }
+  ],
+  "blocks": [
+    {
+        "type": "image",
+        "name": "t:sections.slideshow.blocks.image.name",
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.slideshow.blocks.image.settings.image.label"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "t:sections.slideshow.blocks.image.settings.image_2.label"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "default": "Image banner",
+            "label": "t:sections.slideshow.blocks.image.settings.heading.label"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "default": "Give customers details about the banner image(s) or content on the template.",
+            "label": "t:sections.slideshow.blocks.image.settings.text.label"
+        },
+        {
+            "type": "text",
+            "id": "button_label_1",
+            "default": "Button label",
+            "label": "t:sections.slideshow.blocks.image.settings.button_label_1.label",
+            "info": "t:sections.slideshow.blocks.image.settings.button_label_1.info"
+          },
+          {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "t:sections.slideshow.blocks.image.settings.button_link_1.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_style_secondary_1",
+            "default": false,
+            "label": "t:sections.slideshow.blocks.image.settings.button_style_secondary_1.label"
+          },
+          {
+            "type": "text",
+            "id": "button_label_2",
+            "default": "Button label",
+            "label": "t:sections.slideshow.blocks.image.settings.button_label_2.label",
+            "info": "t:sections.slideshow.blocks.image.settings.button_label_2.info"
+          },
+          {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "t:sections.slideshow.blocks.image.settings.button_link_2.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_style_secondary_2",
+            "default": false,
+            "label": "t:sections.slideshow.blocks.image.settings.button_style_secondary_2.label"
+          },
+          {
+            "type": "select",
+            "id": "desktop_text_box_position",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "t:sections.slideshow.blocks.image.settings.desktop_text_box_position.options__1.label"
+              },
+              {
+                "value": "center",
+                "label": "t:sections.slideshow.blocks.image.settings.desktop_text_box_position.options__2.label"
+              },
+              {
+                "value": "flex-end",
+                "label": "t:sections.slideshow.blocks.image.settings.desktop_text_box_position.options__3.label"
+              }
+            ],
+            "default": "center",
+            "label": "t:sections.slideshow.blocks.image.settings.desktop_text_box_position.label"
+          },
+          {
+            "type": "select",
+            "id": "color_scheme",
+            "options": [
+              {
+                "value": "accent-1",
+                "label": "t:sections.slideshow.blocks.image.settings.color_scheme.options__1.label"
+              },
+              {
+                "value": "accent-2",
+                "label": "t:sections.slideshow.blocks.image.settings.color_scheme.options__2.label"
+              },
+              {
+                "value": "background-1",
+                "label": "t:sections.slideshow.blocks.image.settings.color_scheme.options__3.label"
+              },
+              {
+                "value": "background-2",
+                "label": "t:sections.slideshow.blocks.image.settings.color_scheme.options__4.label"
+              },
+              {
+                "value": "inverse",
+                "label": "t:sections.slideshow.blocks.image.settings.color_scheme.options__5.label"
+              }
+            ],
+            "default": "background-1",
+            "label": "t:sections.slideshow.blocks.image.settings.color_scheme.label"
+          }
+        ]
+    },
+    {
+        "type": "video",
+        "name": "t:sections.slideshow.blocks.video.name",
+        "settings": [
+        {
+            "type": "text",
+            "id": "video",
+            "label": "t:sections.slideshow.blocks.video.settings.image.label"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "default": "Image banner",
+            "label": "t:sections.slideshow.blocks.video.settings.heading.label"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "default": "Give customers details about the banner image(s) or content on the template.",
+            "label": "t:sections.slideshow.blocks.video.settings.text.label"
+        },
+        {
+            "type": "text",
+            "id": "button_label_1",
+            "default": "Button label",
+            "label": "t:sections.slideshow.blocks.video.settings.button_label_1.label",
+            "info": "t:sections.slideshow.blocks.video.settings.button_label_1.info"
+          },
+          {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "t:sections.slideshow.blocks.video.settings.button_link_1.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_style_secondary_1",
+            "default": false,
+            "label": "t:sections.slideshow.blocks.video.settings.button_style_secondary_1.label"
+          },
+          {
+            "type": "text",
+            "id": "button_label_2",
+            "default": "Button label",
+            "label": "t:sections.slideshow.blocks.video.settings.button_label_2.label",
+            "info": "t:sections.slideshow.blocks.video.settings.button_label_2.info"
+          },
+          {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "t:sections.slideshow.blocks.video.settings.button_link_2.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_style_secondary_2",
+            "default": false,
+            "label": "t:sections.slideshow.blocks.video.settings.button_style_secondary_2.label"
+          },
+          {
+            "type": "select",
+            "id": "desktop_text_box_position",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "t:sections.slideshow.blocks.video.settings.desktop_text_box_position.options__1.label"
+              },
+              {
+                "value": "center",
+                "label": "t:sections.slideshow.blocks.video.settings.desktop_text_box_position.options__2.label"
+              },
+              {
+                "value": "flex-end",
+                "label": "t:sections.slideshow.blocks.video.settings.desktop_text_box_position.options__3.label"
+              }
+            ],
+            "default": "center",
+            "label": "t:sections.slideshow.blocks.video.settings.desktop_text_box_position.label"
+          },
+          {
+            "type": "select",
+            "id": "color_scheme",
+            "options": [
+              {
+                "value": "accent-1",
+                "label": "t:sections.slideshow.blocks.video.settings.color_scheme.options__1.label"
+              },
+              {
+                "value": "accent-2",
+                "label": "t:sections.slideshow.blocks.video.settings.color_scheme.options__2.label"
+              },
+              {
+                "value": "background-1",
+                "label": "t:sections.slideshow.blocks.video.settings.color_scheme.options__3.label"
+              },
+              {
+                "value": "background-2",
+                "label": "t:sections.slideshow.blocks.video.settings.color_scheme.options__4.label"
+              },
+              {
+                "value": "inverse",
+                "label": "t:sections.slideshow.blocks.video.settings.color_scheme.options__5.label"
+              }
+            ],
+            "default": "background-1",
+            "label": "t:sections.slideshow.blocks.video.settings.color_scheme.label"
+          }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.slideshow.presets.name",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

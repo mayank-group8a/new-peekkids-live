@@ -1,0 +1,55 @@
+<!-- {{ settings.preordermsg }} -->
+<div
+data-product-id="{{ product.id }}"
+class="hide js-product-inventory-data"
+aria-hidden="true"
+>
+{%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+{%- for variant in variants_with_inventory_tracking -%}
+{%- capture date -%}{% unless variant.next_incoming_date == null %}{% assign day = variant.next_incoming_date | date: '%-d'  %}{{ variant.next_incoming_date | date: "%B" }} {% case day %}{% when '1' or '21' or '31' %}{{ day }}st{% when '2' or '22' %}{{ day }}nd{% when '3' or '23' %}{{ day }}rd{% else %}{{ day }}th{% endcase %}{% endunless %}{%- endcapture -%}
+{%- if date != blank -%}
+{%- assign next_incoming_date = settings.preordermsg | replace: '[date]', date -%}
+{%- endif -%}
+<div
+  class="js-variant-inventory-data {{ variant.id }}"
+  data-inventory_policy="{{ variant.inventory_policy }}"
+  data-quantity="{{ variant.inventory_quantity | default: 0 }}"
+  data-incoming="{{ variant.incoming | default: false }}"
+  data-next_incoming_date="{{ next_incoming_date | default: false }}"
+  {%- if variant.metafields.variant.color_code -%}data-color="{{ variant.metafields.variant.color_code }}"{%- endif -%}
+  {%- if variant.metafields.variant.color_swatche -%}data-color_swatche="{{ variant.metafields.variant.color_swatche | img_url:'x30' }}"{%- endif -%}
+  ></div>
+{%- endfor -%}
+</div>
+<script>
+  // Store variant metafields in JS
+  // console.log('preordermsg {{ settings.preordermsg }}');
+  window.variants = window.variants || {};
+  window.variants['{{product.id}}'] = {};
+  {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+  {% for variant in variants_with_inventory_tracking %}
+  {%- capture date -%}{% unless variant.next_incoming_date == null %}{% assign day = variant.next_incoming_date | date: '%-d'  %}{{ variant.next_incoming_date | date: "%B" }} {% case day %}{% when '1' or '21' or '31' %}{{ day }}st{% when '2' or '22' %}{{ day }}nd{% when '3' or '23' %}{{ day }}rd{% else %}{{ day }}th{% endcase %}{% endunless %}{%- endcapture -%}
+  {%- if date != blank -%}
+  {%- assign next_incoming_date = settings.preordermsg | replace: '[date]', date -%}
+  {%- endif -%}
+  window.variants['{{product.id}}'][{{variant.id}}] = { 'color': '{{ variant.metafields.variant.color_code }}', {%- if variant.metafields.variant.color_swatche -%}{%- assign swatcheImg = variant.metafields.variant.color_swatche | img_url:'x30' -%}'color_swatche': '{{ swatcheImg }}',{%- endif -%}'quantity': {{ variant.inventory_quantity | default: 0 }},'incoming': {{ variant.incoming | default: false | json }},'next_incoming_date': {{ next_incoming_date | default: false | json }} };{% endfor %}
+  </script>
+
+
+  {%- assign variable = value -%}
+  {%- if current_variant.inventory_quantity <= settings.inventory_threshold and current_variant.inventory_quantity >= 0 -%}
+  {%- assign inventory_visible = true -%}
+  {% endif %}
+  {%- if current_variant.inventory_quantity == 0 -%}
+    {%- assign inventory_visible = false -%}
+  {%- endif -%}
+  <div class="ProductInventory-{{ section.id }} product__inventory{% unless inventory_visible %} hidden{% endunless %}" data-inventory_threshold="{{ settings.inventory_threshold }}" style="color: rgba(var(--color-base-accent-2),1);">Only <span class="count">{{ current_variant.inventory_quantity }}</span> items in stock!</div>
+  <div class="availableDate" style="color: rgba(var(--color-base-accent-2),1);">
+    {%- if current_variant.incoming -%}
+      {%- capture date -%}
+      {% unless current_variant.next_incoming_date == null %}{% assign day = current_variant.next_incoming_date | date: '%-d'  %}{{ current_variant.next_incoming_date | date: "%B" }} {% case day %}{% when '1' or '21' or '31' %}{{ day }}st{% when '2' or '22' %}{{ day }}nd{% when '3' or '23' %}{{ day }}rd{% else %}{{ day }}th{% endcase %}{% endunless %}
+      {%- endcapture -%}
+      {%- assign next_incoming_date = settings.preordermsg | replace: '[date]', date -%}
+      {{ next_incoming_date }}
+    {%- endif -%}
+  </div>

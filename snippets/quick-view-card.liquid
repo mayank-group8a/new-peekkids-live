@@ -1,0 +1,18 @@
+{%- assign quickViewShow = settings.quickView -%}
+  {%- if section.id  contains 'product-recommendations' and settings.quickView -%}
+    {%- assign quickViewShow = settings.productquickView -%}
+  {%- elsif template.name contains 'index' and settings.quickView -%}
+    {%- assign quickViewShow = settings.indexquickView -%}
+  {%- endif -%}
+  {% if quickViewShow %}
+    <div class="quick-view-button {% if settings.mobilequickView %}small--hide{% endif %}">
+      <button type="button" class="quick-view" data-handle="{{ product.handle }}">
+        {% if settings.quick_shop_text != blank %}{{- settings.quick_shop_text  -}}{% endif %}
+      </button>
+      {% render 'product-form', product: product, quickView: true %}
+    </div>
+    
+    <script class="product-script" data-id="product-json-{{ product.id}}" type="application/json" data-uw-styling-context="true">{{ product | json }}</script>
+    
+    <script class="product-options-with-values-script" data-id="product-options-json-{{ product.id}}" type="application/json" data-uw-styling-context="true">{{ product.options_with_values | json }}</script>
+  {% endif %}

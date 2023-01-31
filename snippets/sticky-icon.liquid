@@ -1,0 +1,79 @@
+<div class="">    
+    {%- if settings.slide_logo_svg == blank and settings.slide_logo != blank -%}
+        <div class="slide_logo small-hide bottom-sticky">        
+        {%- if settings.button_link_1 != blank -%}<a href="{{ settings.button_link_1 }}">{%endif%}
+      <img
+          src="{{ settings.slide_logo | img_url: 'master' }}"
+          loading="lazy"
+          alt="{{ settings.slide_logo.alt | escape }}"
+          width="{{ settings.slide_logo.width }}"
+          height="auto"
+          style="max-width:100px;max-height:auto;"
+      >{%- if settings.button_link_1 != blank -%}</a>{%endif%}
+    </div>
+  {%- else %}
+        {%- unless settings.slide_logo_svg == blank  -%}
+            <div class="slide_logo small-hide bottom-sticky">        
+            {%- if settings.button_link_1 != blank -%}<a href="{{ settings.button_link_1 }}">{%endif%}{{ settings.slide_logo_svg }}{%- if settings.button_link_1 != blank -%}</a>{%endif%}
+            </div>
+        {% endunless %}
+  {%- endif -%}  
+
+
+  {%- if settings.slide_logo_svg_mob == blank and settings.slide_logo_mob != blank -%}
+    <div class="slide_logo_mob medium-hide large-up-hide bottom-sticky">
+    {%- if settings.button_link_1 != blank -%}<a href="{{ settings.button_link_1 }}">{%endif%}
+    <img
+        src="{{ settings.slide_logo_mob | img_url: 'master' }}"
+        loading="lazy"
+        alt="{{ settings.slide_logo_mob.alt | escape }}"
+        width="{{ settings.slide_logo_mob.width }}"
+        height="auto"
+        style="max-width:50px;max-height:auto;"
+    >
+        {%- if settings.button_link_1 != blank -%}</a>{%endif%}
+    </div>
+{%- else %}
+        {%- unless settings.slide_logo_svg_mob == blank  -%}
+        <div class="slide_logo_mob medium-hide large-up-hide bottom-sticky">
+            {%- if settings.button_link_1 != blank -%}<a href="{{ settings.button_link_1 }}">{%endif%}
+            {{ settings.slide_logo_svg_mob }}
+            {%- if settings.button_link_1 != blank -%}</a>{%endif%}
+        </div>
+        {% endunless %}
+{%- endif -%}  
+
+<div>
+    <style>
+        .bottom-sticky {
+            position: fixed;
+            left: auto;
+            right: 15px;
+            bottom: 15px;
+            background-color: #F7F7F7;
+            color: white;
+            border-radius: 52px;
+            padding: 5px 20px;
+            text-align: center;
+            z-index:1;
+        }
+        .bottom-sticky .slide_logo 
+        {
+            display: flex;
+        }
+      .bottom-sticky .slide_logo img{
+        display: block;
+      }
+        @media screen and (max-width: 750px) 
+        {
+            .bottom-sticky {
+                padding:5px;
+                border-radius: 50%;                
+            }
+            .bottom-sticky img
+            {
+                border-radius: 50%;
+                display: block;
+            }
+        }
+    </style>

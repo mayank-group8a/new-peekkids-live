@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "collection-template-boost-pfs-filter",
+      "blocks": {
+        "f224a240-cf43-4d8e-9d02-c951fa73ab03": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "handle": "Halloween Favorites",
+            "heading": "",
+            "collection_list_image": "shopify:\/\/shop_images\/Photo_Sep_18_9_26_44_AM.jpg",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_label2": "Button label",
+            "button_link2": "shopify:\/\/collections\/halloween"
+          }
+        }
+      },
+      "block_order": [
+        "f224a240-cf43-4d8e-9d02-c951fa73ab03"
+      ],
+      "settings": {
+        "menu": "main-menu-new",
+        "layout_type": "box",
+        "show_collection_image": true,
+        "show_collection_des": true,
+        "cover_image": "shopify:\/\/shop_images\/Group_177.png",
+        "collection_header_text": "",
+        "switch_layout_filter": "switch_layout_filter_horizontal",
+        "enable_filter_sticky_d": false,
+        "filter_layout": "filter_layout_default",
+        "show_view_as": false,
+        "show_product_count": true,
+        "show_sort_by": true,
+        "show_product_count_m": true,
+        "show_sort_by_m": true,
+        "products_per_page": 16,
+        "products_per_row": 4,
+        "products_per_row_m": 2,
+        "product_item_type": "grid",
+        "product_item_layout": "no-border",
+        "show_detail_when_hover": false,
+        "show_vendor": false,
+        "show_price": true,
+        "active_image_swap": true,
+        "show_product_review": true,
+        "product_title_color": "#3d4246",
+        "product_title_size": 14,
+        "product_title_transform": "capitalize",
+        "product_vendor_color": "#969595",
+        "product_vendor_size": 12,
+        "product_vendor_transform": "uppercase",
+        "product_price_color": "#222222",
+        "product_old_price_color": "#969595",
+        "product_sale_price_color": "#f30000",
+        "product_price_size": 14,
+        "product_des_color": "#3a3a3a",
+        "product_des_size": 14,
+        "swatch_enable": false,
+        "show_swatch_tooltip": true,
+        "swatch_change_img": "hover",
+        "swatch_by_color_apply": "",
+        "swatch_by_color_shape": "circle",
+        "swatch_by_img_apply": "",
+        "swatch_by_img_shape": "circle",
+        "swatch_by_pro_img_apply": "color",
+        "swatch_by_pro_img_shape": "circle",
+        "swatch_by_text_apply": "",
+        "swatch_by_text_shape": "square",
+        "swatch_by_text_bg": "#ffffff",
+        "swatch_by_text_color": "#3d4246",
+        "swatch_by_text_border": "#ebebeb",
+        "swatch_color_display_type": "swatch_color_display_type_image_product",
+        "swatches_color_shape": "circle",
+        "aspect_ratio": "auto",
+        "aspect_ratio_other": "",
+        "product_img_crop": "none",
+        "label_position": "top_left",
+        "label_type": "rectangle",
+        "sale_label_enable": true,
+        "sale_label_display": "text",
+        "sale_label_bg": "",
+        "sale_label_text": "",
+        "sold_out_enable": true,
+        "sold_out_display": "text",
+        "sold_out_bg": "",
+        "sold_out_text": "",
+        "tag_label_enable": false,
+        "tag_label_bg": "",
+        "tag_label_text": ""
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

@@ -1,0 +1,397 @@
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-product-grid.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
+{%- if section.settings.show_product_recommendations == 'dynamic' -%}
+<product-recommendations class="product-recommendations page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=40">
+  <div class="page-inner-width">
+    {% if recommendations.performed and recommendations.products_count > 0 %}
+        <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
+        <div class="product-recommendationswrpper">
+        <ul class="grid grid--2-col product-grid{% if recommendations.products_count > 3 %} grid--4-col-desktop grid--quarter-max{% else %} grid--{{ recommendations.products_count }}-col-tablet{% endif %}" role="list"
+    
+        {%- if section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%}
+          data-slickslider="true"
+          data-slick-autoplay="{{ section.settings.autoplay }}"
+          data-slick-autoplayspeed="{{ section.settings.autorotate_speed | times: 1000 }}"
+          data-slick-infinite="{{ section.settings.sliderLoop }}"
+          data-slick-pauseonhover="{{ section.settings.pauseOnHover }}"
+      
+          data-slick-desktop-init="{{ section.settings.desktopInit }}"
+          data-slick-desktop-show="{{ section.settings.desktopShow }}"
+          data-slick-desktop-arrows="{{ section.settings.desktopArrows }}"
+          data-slick-desktop-dots="{{ section.settings.desktopDots }}"
+          data-slick-desktop-vertical="false"
+      
+          data-slick-tab-init="{{ section.settings.tabInit }}"
+          data-slick-tab-show="{{ section.settings.tabShow }}"
+          data-slick-tab-arrows="{{ section.settings.tabArrows }}"
+          data-slick-tab-dots="{{ section.settings.tabDots }}"
+          data-slick-tab-vertical="false"
+      
+          data-slick-mobile-init="{{ section.settings.mobileInit }}"
+          data-slick-mobile-show="{{ section.settings.mobileShow }}"
+          data-slick-mobile-arrows="{{ section.settings.mobileArrows }}"
+          data-slick-mobile-dots="{{ section.settings.mobileDots }}"
+          data-slick-mobile-vertical="false"
+          {%- endif -%}
+    >
+            {% for recommendation in recommendations.products %}
+                <li class="grid__item">
+                    {% render 'product-card',
+            product_card_product: recommendation,
+            media_size: section.settings.image_ratio,
+            show_secondary_image: section.settings.show_secondary_image,
+            add_image_padding: section.settings.add_image_padding,
+            show_vendor: section.settings.show_vendor,
+            show_image_outline: section.settings.show_image_outline
+          %}
+                </li>
+            {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</product-recommendations>
+{%- elsif section.settings.show_product_recommendations == 'selected' -%}
+
+<product-recommendations class="product-recommendations page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+  <div class="page-inner-width">
+    {% if recommendations.performed and recommendations.products_count > 0 %}
+        <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
+        <ul class="grid grid--2-col product-grid{% if recommendations.products_count > 3 %} grid--4-col-desktop grid--quarter-max{% else %} grid--{{ recommendations.products_count }}-col-tablet{% endif %}" role="list"
+      
+      
+        {%- if section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%}
+          data-slickslider="true"
+          data-slick-autoplay="{{ section.settings.autoplay }}"
+          data-slick-autoplayspeed="{{ section.settings.autorotate_speed | times: 1000 }}"
+          data-slick-infinite="{{ section.settings.sliderLoop }}"
+          data-slick-pauseonhover="{{ section.settings.pauseOnHover }}"
+      
+          data-slick-desktop-init="{{ section.settings.desktopInit }}"
+          data-slick-desktop-show="{{ section.settings.desktopShow }}"
+          data-slick-desktop-arrows="{{ section.settings.desktopArrows }}"
+          data-slick-desktop-dots="{{ section.settings.desktopDots }}"
+          data-slick-desktop-vertical="false"
+      
+          data-slick-tab-init="{{ section.settings.tabInit }}"
+          data-slick-tab-show="{{ section.settings.tabShow }}"
+          data-slick-tab-arrows="{{ section.settings.tabArrows }}"
+          data-slick-tab-dots="{{ section.settings.tabDots }}"
+          data-slick-tab-vertical="false"
+      
+          data-slick-mobile-init="{{ section.settings.mobileInit }}"
+          data-slick-mobile-show="{{ section.settings.mobileShow }}"
+          data-slick-mobile-arrows="{{ section.settings.mobileArrows }}"
+          data-slick-mobile-dots="{{ section.settings.mobileDots }}"
+          data-slick-mobile-vertical="false"
+          {%- endif -%}>
+                {%- for block in section.blocks -%}
+
+                {% assign ctm_product = all_products[block.settings.c_product] %}
+                {% assign price_show = section.settings.price-enbale %}
+                <li class="grid__item">
+                    {% render 'product-card',
+            product_card_product: ctm_product,
+            media_size: section.settings.image_ratio,
+            show_secondary_image: section.settings.show_secondary_image,
+            add_image_padding: section.settings.add_image_padding,
+            show_vendor: section.settings.show_vendor,
+            show_image_outline: section.settings.show_image_outline
+          %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+  </div>
+  </div>
+</product-recommendations>
+{%- endif -%}
+
+{% javascript %}
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+
+            if (html.querySelector('.grid__item')) {
+              this.classList.add('product-recommendations--loaded');
+              console.log('product-recommendations--loaded');
+              createSlick();
+              inlineFormOptions();
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+{% schema %}
+
+{
+    "name": "t:sections.product-recommendations.name",
+    "tag": "section",
+    "class": "section-product-recommendations spaced-section",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "t:sections.product-recommendations.settings.paragraph__1.content"
+        }, {
+            "type": "select",
+            "id": "show_product_recommendations",
+            "label": {
+              "cs": "Zobrazit dynamická doporučení",
+              "da": "Vis dynamiske anbefalinger",
+              "de": "Dynamische Empfehlungen anzeigen",
+              "en": "Show recommendations",
+              "es": "Mostrar recomendaciones dinámicas",
+              "fi": "Näytä dynaamiset suositukset",
+              "fr": "Afficher les recommandations dynamiques",
+              "it": "Mostra raccomandazioni dinamiche",
+              "ja": "動的推奨を表示する",
+              "ko": "동적 권장 사항 표시",
+              "nb": "Vis dynamiske anbefalinger",
+              "nl": "Dynamische aanbevelingen weergeven",
+              "pl": "Pokaż dynamiczne rekomendacje",
+              "pt-BR": "Exibir recomendações dinâmicas",
+              "pt-PT": "Mostrar recomendações dinâmicas",
+              "sv": "Visa dynamiska rekommendationer",
+              "th": "แสดงคำแนะนำแบบไดนามิก",
+              "tr": "Dinamik önerileri göster",
+              "vi": "Hiển thị đề xuất động",
+              "zh-CN": "显示动态推荐",
+              "zh-TW": "顯示動態推薦"
+            },
+            "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
+            "options": [
+              {
+                "value": "disable",
+                "label": "Disable"
+              },
+              {
+                "value": "dynamic",
+                "label": "Automatically Generated"
+              },
+              {
+                "value": "selected",
+                "label":"Manually Selected"
+              }
+            ] 
+            
+          },{
+            "type": "text",
+            "id": "heading",
+            "default": "You may also like",
+            "label": "t:sections.product-recommendations.settings.heading.label"
+        }, {
+            "type": "header",
+            "content": "t:sections.product-recommendations.settings.header__2.content"
+        }, {
+            "type": "select",
+            "id": "image_ratio",
+            "options": [
+                {
+                    "value": "adapt",
+                    "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+                }, {
+                    "value": "portrait",
+                    "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+                }, {
+                    "value": "square",
+                    "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+                }
+            ],
+            "default": "adapt",
+            "label": "t:sections.product-recommendations.settings.image_ratio.label"
+        }, {
+            "type": "checkbox",
+            "id": "show_secondary_image",
+            "default": false,
+            "label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+        }, {
+            "type": "checkbox",
+            "id": "add_image_padding",
+            "default": false,
+            "label": "t:sections.product-recommendations.settings.add_image_padding.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image_outline",
+          "default": true,
+          "label": "t:sections.product-recommendations.settings.show_image_outline.label"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_vendor",
+            "default": false,
+            "label": "t:sections.product-recommendations.settings.show_vendor.label"
+        },
+        {
+          "type": "header",
+          "content": "Slider Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "t:sections.quotes.settings.autoplay.label",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "autorotate_speed",
+          "label": "t:sections.quotes.settings.autorotate_speed.label",
+          "max": 10,
+          "min": 1,
+          "step": 1,
+          "unit": " s",
+          "default": 3
+        },
+        {
+          "type": "checkbox",
+          "id": "sliderLoop",
+          "label": "t:sections.quotes.settings.sliderLoop.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "pauseOnHover",
+          "label": "t:sections.quotes.settings.pauseOnHover.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Desktop Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "desktopInit",
+          "label": "t:sections.quotes.settings.desktopInit.label",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "desktopShow",
+          "label": "t:sections.quotes.settings.desktopShow.label",
+          "default": 4,
+          "max": 8,
+          "min": 1,
+          "step": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "desktopArrows",
+          "label": "t:sections.quotes.settings.desktopArrows.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "desktopDots",
+          "label": "t:sections.quotes.settings.desktopDots.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Tablet Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "tabInit",
+          "label": "t:sections.quotes.settings.tabInit.label",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "tabShow",
+          "label": "t:sections.quotes.settings.tabShow.label",
+          "default": 3,
+          "max": 6,
+          "min": 1,
+          "step": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "tabArrows",
+          "label": "t:sections.quotes.settings.tabArrows.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "tabDots",
+          "label": "t:sections.quotes.settings.tabDots.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Mobile Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobileInit",
+          "label": "t:sections.quotes.settings.mobileInit.label",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "mobileShow",
+          "label": "t:sections.quotes.settings.mobileShow.label",
+          "default": 2,
+          "max": 6,
+          "min": 1,
+          "step": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "mobileArrows",
+          "label": "t:sections.quotes.settings.mobileArrows.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mobileDots",
+          "label": "t:sections.quotes.settings.mobileDots.label",
+          "default": false
+        }
+    ],
+    "blocks": [
+    {
+      "type": "Product",
+      "name": "Product",
+      "settings": [
+        {
+        "type": "product",
+        "id": "c_product",
+        "label": "Product"
+        }
+  ]
+    
+  }
+  ]
+}
+
+{% endschema %}

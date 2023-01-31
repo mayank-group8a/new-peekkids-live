@@ -1,0 +1,185 @@
+
+.product_list .title-logo-wrapper {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.product_list .title-logo-wrapper .logo-wrapper
+{
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+.product_list .title-logo-wrapper .logo-wrapper .image_wrapper {
+    position: relative;
+}
+.product_list .title-logo-wrapper .logo-wrapper .image_wrapper:last-child::before {
+
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    height: 0px;
+    display: block;
+    width: 11px;
+    height: 80%;
+    border-left: 1px solid rgba(112, 112, 112, 0.2);
+}
+.product_list .title-logo-wrapper .logo-wrapper .image_wrapper img
+{
+    margin: 0px 20px;
+}
+.product_list .title-logo-wrapper  .title-wrapper-with-link
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.product_list .menu-content-item {
+    display: flex;
+    gap:20px;
+}
+.product_list .menu-content-item  .menu-items {
+    width: 20%;
+    flex: 20%;
+    align-items: center;
+}
+.product_list .menu-content-item .content-items
+{
+    width: 80%;
+    flex: 80%;
+}
+.product_list .menu-content-item  .menu-items ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    border-left: 1px solid rgba(112, 112, 112, 0.2);
+}
+.product_list .menu-content-item  .menu-items ul li
+{
+    cursor: pointer;
+    padding: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    border-left: 1px solid transparent;
+}
+.product_list .menu-content-item  .menu-items ul li.menu-title-list_active
+{
+    color: #7FB1B4;
+    border-left: 1px solid #e48a59;
+}
+.product_list .menu-content-item .content-items .collection-list__item:not(.active)
+{
+ display: none;
+}
+.product_list .title-logo-wrapper h6.collection-list-description
+{
+    color: #7fb1b4;
+    font-size: 24px;
+    margin: 0px;
+}
+.product_list .title-logo-wrapper .collection-list-title
+{
+    color: #e48a59;
+    font-size: 36px;
+    text-align: left;
+    font-weight: 600;
+}
+/* .product_list .menu-content-item .content-items .collection-list__item .price
+{
+    display: block;
+    color: black;
+    font-size: 18px;
+    font-family: 'Varela Round';
+} */
+@media (max-width: 1280px)
+{
+    .product_list .title-logo-wrapper h6.collection-list-description
+    {
+        font-size: 24px;
+    }
+    .product_list .title-logo-wrapper .collection-list-title
+    {
+        font-size: 30px;
+    }
+}
+@media (max-width: 1199px)
+{
+  .product_list .title-logo-wrapper {
+        gap: 0px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product_list .title-logo-wrapper    .title-wrapper-with-link
+    {
+        justify-content: center;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-direction: column;
+    }
+    .product_list .title-logo-wrapper    .title-wrapper-with-link>*
+    {
+        text-align: center;
+    }
+    .product_list .menu-content-item {
+        flex-direction: column;
+    }
+    .product_list .menu-content-item .menu-items ,.product_list .menu-content-item .content-items{
+        width: 100%;
+        flex: 100%;
+    }
+    .product_list .menu-content-item .menu-items ul {
+        border-left: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow:scroll;
+    }
+    .product_list .menu-content-item .menu-items ul li.menu-title-list_active {
+        border-left: 0px;
+        border-bottom: 1px solid #e48a59;
+    }
+}
+@media (max-width: 991px)
+{
+
+
+
+    .product_list .title-logo-wrapper .collection-list-title
+    {
+        font-size: 26px;
+    }
+    .product_list .title-logo-wrapper h6.collection-list-description {
+        font-size: 18px;
+    }
+}
+@media (max-width: 767px)
+{
+    .product_list .title-logo-wrapper .logo-wrapper .image_wrapper img {
+        margin: 0px 20px;
+        width: 85%;
+        height: auto;
+        margin: 0px auto;
+        display: block;
+    }
+    .product_list .menu-content-item .menu-items ul
+    {
+        justify-content: flex-start;
+    }
+    .product_list .menu-content-item .menu-items ul li
+    {
+        text-align: center;
+        font-size: 14px;
+        flex: 0 0 40%;
+    }
+}
+@media (max-width: 400px)
+{
+    .product_list .menu-content-item .menu-items ul li
+    {
+        flex: 1 1 auto;
+      white-space:nowrap;
+    }
+}

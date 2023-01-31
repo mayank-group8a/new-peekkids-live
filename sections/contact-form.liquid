@@ -1,0 +1,135 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+<div class="form-bg">
+<div class="contact page-width {% if section.settings.form_img !=blank %} form-with-img {%else%} page-width--narrow spaced-section{%endif%}">
+  <div class="form-block">
+  <h2 class="h2-heading h2-heading-color">{{ section.settings.heading | escape }}</h2>
+  <div class="hr"></div>
+  {%- form 'contact', id: 'ContactForm' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+    {%- elsif form.errors -%}
+      <div class="form__message">
+        <h2 class="form-status caption-large" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+      </div>
+      <ul class="form-status-list caption-large" role="list">
+        <li>
+          <a href="#ContactForm-email" class="link">
+            {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+          </a>
+        </li>
+      </ul>
+    {%- endif -%}
+    <div class="contact__fields">
+      <div class="field">
+        <input required class="field__input" autocomplete="name" type="text" id="ContactForm-firstname" name="contact[{{ 'templates.contact.form.first_name' | t }}]"  value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}" placeholder="{{ 'templates.contact.form.first_name' | t }}">
+        <label class="" for="ContactForm-firstname">First {{ 'templates.contact.form.name' | t }}<span aria-hidden="true">*</span></label>
+      </div>
+      <div class="field">
+        <input class="field__input" autocomplete="name" type="text" id="ContactForm-lastname" name="contact[{{ 'templates.contact.form.last_name' | t }}]" value="{% if form.last_name %}{{ form.last_name }}{% elsif customer %}{{ customer.last_name }}{% endif %}" placeholder="{{ 'templates.contact.form.last_name' | t }}">
+        <label class="" for="ContactForm-lastname">Last {{ 'templates.contact.form.name' | t }}</label>
+      </div>
+    </div>
+    <div class="contact__fields">
+    <div class="field field--with-error">
+        <input
+          autocomplete="email"
+          type="email"
+          id="ContactForm-email"
+          class="field__input"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          placeholder="{{ 'templates.contact.form.email' | t }}"
+          required
+        >
+        <label class="" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} Address <span aria-hidden="true">*</span></label>
+        {%- if form.errors contains 'email' -%}
+          <small class="contact__field-error" id="ContactForm-email-error">
+            <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+            <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+          </small>
+        {%- endif -%}
+      </div>
+        <div class="field">
+          <input required type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" aria-required="true" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
+          <label class="" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}<span aria-hidden="true">*</span></label>
+        </div>
+     </div>
+    <div class="field">
+      <textarea
+        rows="10"
+        id="ContactForm-body"
+        class="text-area field__input"
+        name="contact[{{ 'templates.contact.form.comment' | t }}]"
+        placeholder="{{ 'templates.contact.form.comment' | t }}"
+      >
+        {{- form.body -}}
+      </textarea>
+      <label class="form__label" for="ContactForm-body">Your Message</label>
+    </div>
+    <div class="contact__button">
+      <button type="submit" class="button">
+       {% comment %} {{ 'templates.contact.form.send' | t }} {% endcomment %}
+              SUBMIT
+      </button>
+    </div>
+  {%- endform -%}
+  </div>
+  <div class="form-riht-img">
+    <img
+        srcset="{%- if section.settings.form_img.width >= 375 -%}{{ section.settings.form_img| img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 750 -%}{{ section.settings.form_img | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 1100 -%}{{ section.settings.form_img | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 1500 -%}{{ section.settings.form_img | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 1780 -%}{{ section.settings.form_img | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 2000 -%}{{ section.settings.form_img | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 3000 -%}{{ section.settings.form_img | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.form_img.width >= 3840 -%}{{ section.settings.form_img | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.form_img | img_url: 'master' }} {{ section.settings.form_img.width }}w"
+        src="{{ section.settings.form_img | img_url: '1500x' }}"
+        loading="lazy"
+        alt="{{ section.settings.form_img.alt | escape }}"
+        width="{{ section.settings.form_img.width }}"
+        height="{{ section.settings.form_img.width | divided_by: section.settings.form_img.aspect_ratio }}"
+      >
+  </div>
+</div>
+</div>
+<style>
+  #shopify-section-{{section.id}}.spaced-section
+  {
+    margin-bottom:0px;
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+	{
+      "type": "image_picker",
+      "id": "form_img",
+      "label": "Form Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

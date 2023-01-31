@@ -1,0 +1,368 @@
+<style>
+    #shopify-section-{{ section.id }}{
+      background: {{ section.settings.sectionColor }};
+      
+    }
+    #shopify-section-{{ section.id }} .quotes {
+      margin-top: 0;
+    }
+    @media screen and (min-width: 750px){
+      #shopify-section-{{ section.id }}{
+        padding: calc(-2rem + var(--page-width-margin)) 0 calc(12rem + var(--page-width-margin));
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+  </style>
+  {{ 'career-quotes.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+  
+  <div class="quotes {{ section.settings.background_style }} {% if section.settings.title == blank %} no-heading{% endif %}" >
+    <div class="page-width">
+       <div class="inner__container"> 
+      {% if section.settings.title != blank and section.settings.title_image == blank%}
+        
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}" data-aos="fade-up" data-aos-delay="300">
+        <h2 class="title h2-heading" style="color:{{section.settings.title_color}}">
+          {{ section.settings.title  }}
+        </h2>
+        {% comment %} <div class="hr"></div> {% endcomment %}
+      </div>
+      {% else %}
+      <div class="quotes-image">
+            <img
+            src="{{ section.settings.title_image | img_url: 'master' }}"
+            alt="{{ section.settings.title }}"
+            height="{{ section.settings.title_image.height }}"
+            width="{{ section.settings.title_image.width }}"
+            loading="lazy"
+        >
+        </div>
+    {% endif %}
+        {% if section.blocks.size > 0 %}
+          <div class=" {%- unless section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%} single-quote {% endunless%}quotes-bar{% if section.settings.title_enable %} logo-bar--large{% endif %} slider"
+          {%- if section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%}
+          data-slickslider="true"
+          data-slick-autoplay="{{ section.settings.autoplay }}"
+          data-slick-autoplayspeed="{{ section.settings.autorotate_speed | times: 1000 }}"
+          data-slick-infinite="{{ section.settings.sliderLoop }}"
+          data-slick-pauseonhover="{{ section.settings.pauseOnHover }}"
+          data-slider-fade="{{ section.settings.fade }}"
+  
+          data-slick-desktop-init="{{ section.settings.desktopInit }}"
+          data-slick-desktop-show="{{ section.settings.desktopShow }}"
+          data-slick-desktop-arrows="{{ section.settings.desktopArrows }}"
+          data-slick-desktop-dots="{{ section.settings.desktopDots }}"
+          data-slick-desktop-vertical="false"
+      
+          data-slick-tab-init="{{ section.settings.tabInit }}"
+          data-slick-tab-show="{{ section.settings.tabShow }}"
+          data-slick-tab-arrows="{{ section.settings.tabArrows }}"
+          data-slick-tab-dots="{{ section.settings.tabDots }}"
+          data-slick-tab-vertical="false"
+      
+          data-slick-mobile-init="{{ section.settings.mobileInit }}"
+          data-slick-mobile-show="{{ section.settings.mobileShow }}"
+          data-slick-mobile-arrows="{{ section.settings.mobileArrows }}"
+          data-slick-mobile-dots="{{ section.settings.mobileDots }}"
+          data-slick-mobile-vertical="false"
+         
+          {%- endif -%} data-aos="fade-up" data-aos-delay="300">
+        {%- endif -%}
+          {%- liquid
+            assign highest_ratio = 0
+            for block in section.blocks
+              if block.settings.image.aspect_ratio > highest_ratio
+                assign highest_ratio = block.settings.image.aspect_ratio
+              endif
+            endfor
+          -%}
+          {%- for block in section.blocks -%}
+            <li class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.text != blank -%}
+                  <div class="rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+              <div class="multicolumn-card">
+                {%- if block.settings.image != blank -%}
+                  {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
+                    {% assign spaced_image = true %}
+                  {% endif %}
+                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                      <img
+                          src="{{ block.settings.image | img_url: 'master' }}"
+                        alt="{{ block.settings.title }}"
+                        height="{{ block.settings.image.height }}"
+                        width="{{ block.settings.image.width }}"
+                        loading="lazy"
+                      >
+                  </div>
+                {%- endif -%}
+                <div class="multicolumn-card__info">
+                  {%- if block.settings.name != blank -%}<h3>{{ block.settings.name | escape }}</h3>{%- endif -%}
+                  {%- if block.settings.author != blank -%}<em>{{ block.settings.author | escape }}</em>{%- endif -%}
+                 
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        </div>
+  
+        
+    </div>
+    </div>
+  </div>
+<script>
+document.addEventListener(
+    'scroll',
+    (event) => {
+        AOS.refreshHard();
+    }, 
+    { passive: true }
+);
+</script>
+  
+  {% schema %}
+  {
+    "name": "Career quotes",
+    "class": "spaced-section spaced-section--full-width quote-slider career-quote-slider",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "title_image",
+            "label": "Title Image"
+        },
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Multicolumn",
+        "label": "Title",
+        "info":"text hidden if title image is there"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "default": "#e48a59",
+        "label": "Title color"
+      },
+      {
+        "type": "select",
+        "id": "column_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          },
+          {
+            "value": "center",
+            "label": "center"
+          }
+        ],
+        "default": "left",
+        "label": "left"
+      },
+      {
+        "type": "select",
+        "id": "background_style",
+        "options": [
+          {
+            "value": "none",
+            "label": "none"
+          },
+          {
+            "value": "primary",
+            "label": "Show as column background"
+          },
+          {
+            "value": "color-inverse",
+            "label": "Show as section background"
+          },
+          {
+            "value": "color-accent-1",
+            "label": "Show as column accent1"
+          }
+        ],
+        "default": "none",
+        "label": "none"
+      },
+      {
+        "type": "header",
+        "content": "Slider Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "autorotate_speed",
+        "label": "Change slides every",
+        "max": 10,
+        "min": 1,
+        "step": 1,
+        "unit": " s",
+        "default": 3
+      },
+      {
+          "type": "checkbox",
+          "id": "sliderLoop",
+          "label": "Infinite loop sliding",
+          "default": true
+      },
+      {
+          "type": "checkbox",
+          "id": "pauseOnHover",
+          "label": "Pause on Hover",
+          "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "fade",
+        "label": "Fade animation",
+        "default": false
+      },
+      {
+          "type": "header",
+          "content": "Desktop Settings"
+      },
+      {
+          "type": "checkbox",
+          "id": "desktopInit",
+          "label": "Enable Slider in Desktop",
+          "default": true
+      },
+      {
+          "type": "range",
+          "id": "desktopShow",
+          "label": "Show",
+          "default": 4,
+          "max": 8,
+          "min": 1,
+          "step": 1
+      },
+      {
+          "type": "checkbox",
+          "id": "desktopArrows",
+          "label": "Arrows",
+          "default": true
+      },
+      {
+          "type": "checkbox",
+          "id": "desktopDots",
+          "label": "Dots",
+          "default": false
+      },
+      {
+          "type": "header",
+          "content": "Tablet Settings"
+      },
+      {
+          "type": "checkbox",
+          "id": "tabInit",
+          "label": "Enable slider in tablet",
+          "default": true
+      },
+      {
+          "type": "range",
+          "id": "tabShow",
+          "label": "Show",
+          "default": 3,
+          "max": 6,
+          "min": 1,
+          "step": 1
+      },
+      {
+          "type": "checkbox",
+          "id": "tabArrows",
+          "label": "Arrows",
+          "default": true
+      },
+      {
+          "type": "checkbox",
+          "id": "tabDots",
+          "label": "Dots",
+          "default": false
+      },
+      {
+          "type": "header",
+          "content": "Mobile Settings"
+      },
+      {
+          "type": "checkbox",
+          "id": "mobileInit",
+          "label": "Enable slider in Mobile",
+          "default": true
+      },
+      {
+          "type": "range",
+          "id": "mobileShow",
+          "label": "Show",
+          "default": 2,
+          "max": 6,
+          "min": 1,
+          "step": 1
+      },
+      {
+          "type": "checkbox",
+          "id": "mobileArrows",
+          "label": "Arrows",
+          "default": true
+      },
+      {
+          "type": "checkbox",
+          "id": "mobileDots",
+          "label": "Dots",
+          "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "label": "Description"
+          },
+          {
+              "type": "text",
+              "id": "name",
+              "label": "Name"
+          },
+          {
+              "type": "text",
+              "id": "author",
+              "label": "Author"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Career quotes",
+        "blocks": [
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          },
+          {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

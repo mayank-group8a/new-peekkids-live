@@ -1,0 +1,182 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1651044917b078dcff": {
+      "type": "section-breadcrumb",
+      "settings": {
+      }
+    },
+    "16510444800764533d": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "1651044480421d91e5-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Commitment",
+            "heading_color": "#e48a59"
+          }
+        },
+        "1651044480421d91e5-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Peek Kids is committed to improving cotton farming practices globally with Better Cotton. Better Cotton is sourced via a chain of custody model called mass balance. This means that Better Cotton is not physically traceable to end products, however, Better Cotton Farmers benefit from the demand for Better Cotton in equivalent volumes to those we source.<\/p>\n\n<p>We are committed to sourcing 50% of our cotton as Better Cotton by 2026.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "1651044480421d91e5-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1651044480421d91e5-0",
+        "1651044480421d91e5-1",
+        "1651044480421d91e5-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/11HN5A0030_1.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    },
+    "165104463174400e1c": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "16510446310d8a712e-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Better Cotton",
+            "heading_color": "#e48a59"
+          }
+        },
+        "16510446310d8a712e-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Better Cotton's mission is to help cotton communities survive and thrive, while protecting and restoring the environment. By buying cotton products from Peek, you're supporting the Better Cotton Farmers who use water efficiently, care for soil heath and natural habitats, reduce use of the most harmful chemicals and respect workers' rights and wellbeing. For more info, visit bettercotton.org\/learnmore. <\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "16510446310d8a712e-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16510446310d8a712e-0",
+        "16510446310d8a712e-1",
+        "16510446310d8a712e-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20201101_PEEK_ELENAFONG_125_1_1.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "text_first",
+        "full_width": true,
+        "bg_color": "#fafafa"
+      }
+    },
+    "165105083664f947ef": {
+      "type": "career-quotes",
+      "blocks": {
+        "1651050836987e8272-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ellipse_7_2e0b968b-fc8a-4d3c-890c-e5a36dd83a5a.png",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+            "name": "John Doe",
+            "author": "CEO & Founder"
+          }
+        }
+      },
+      "block_order": [
+        "1651050836987e8272-0"
+      ],
+      "settings": {
+        "title": "<svg width=\"50px\" height=\"50px\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" version=\"1.1\" x=\"0\" y=\"0\" viewbox=\"0 0 95.333 95.332\" style=\"enable-background:new 0 0 512 512\" class=\"\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xmlns:svgjs=\"http:\/\/svgjs.com\/svgjs\" xml:space=\"preserve\"><g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> \t<g> \t\t<path d=\"M30.512,43.939c-2.348-0.676-4.696-1.019-6.98-1.019c-3.527,0-6.47,0.806-8.752,1.793    c2.2-8.054,7.485-21.951,18.013-23.516c0.975-0.145,1.774-0.85,2.04-1.799l2.301-8.23c0.194-0.696,0.079-1.441-0.318-2.045    s-1.035-1.007-1.75-1.105c-0.777-0.106-1.569-0.16-2.354-0.16c-12.637,0-25.152,13.19-30.433,32.076    c-3.1,11.08-4.009,27.738,3.627,38.223c4.273,5.867,10.507,9,18.529,9.313c0.033,0.001,0.065,0.002,0.098,0.002    c9.898,0,18.675-6.666,21.345-16.209c1.595-5.705,0.874-11.688-2.032-16.851C40.971,49.307,36.236,45.586,30.512,43.939z\" fill=\"#ff8100\" data-original=\"#000000\" class=\"\"><\/path> \t\t<path d=\"M92.471,54.413c-2.875-5.106-7.61-8.827-13.334-10.474c-2.348-0.676-4.696-1.019-6.979-1.019    c-3.527,0-6.471,0.806-8.753,1.793c2.2-8.054,7.485-21.951,18.014-23.516c0.975-0.145,1.773-0.85,2.04-1.799l2.301-8.23    c0.194-0.696,0.079-1.441-0.318-2.045c-0.396-0.604-1.034-1.007-1.75-1.105c-0.776-0.106-1.568-0.16-2.354-0.16    c-12.637,0-25.152,13.19-30.434,32.076c-3.099,11.08-4.008,27.738,3.629,38.225c4.272,5.866,10.507,9,18.528,9.312    c0.033,0.001,0.065,0.002,0.099,0.002c9.897,0,18.675-6.666,21.345-16.209C96.098,65.559,95.376,59.575,92.471,54.413z\" fill=\"#ff8100\" data-original=\"#000000\" class=\"\"><\/path> \t<\/g> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <g xmlns=\"http:\/\/www.w3.org\/2000\/svg\"> <\/g> <\/g><\/svg>",
+        "title_color": "#e48a59",
+        "column_alignment": "center",
+        "background_style": "none",
+        "autoplay": true,
+        "autorotate_speed": 3,
+        "sliderLoop": true,
+        "pauseOnHover": false,
+        "fade": false,
+        "desktopInit": false,
+        "desktopShow": 1,
+        "desktopArrows": true,
+        "desktopDots": false,
+        "tabInit": false,
+        "tabShow": 1,
+        "tabArrows": true,
+        "tabDots": false,
+        "mobileInit": false,
+        "mobileShow": 1,
+        "mobileArrows": true,
+        "mobileDots": false
+      }
+    },
+    "16510528298ceec2d0": {
+      "type": "rich-text",
+      "blocks": {
+        "16510528291fbb7646-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "What does the partnership mean for Peek Kids?",
+            "heading_size": "h2",
+            "heading_color": "#7fb1b4"
+          }
+        },
+        "16510528291fbb7646-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum<\/p><p><\/p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.<\/p><p><\/p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "16510528291fbb7646-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "16510528291fbb7646-0",
+        "16510528291fbb7646-1",
+        "16510528291fbb7646-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "page_width": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1651044917b078dcff",
+    "16510444800764533d",
+    "165104463174400e1c",
+    "165105083664f947ef",
+    "16510528298ceec2d0"
+  ]
+}

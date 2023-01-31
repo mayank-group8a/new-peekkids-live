@@ -1,0 +1,282 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>{{ page_title }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+    
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer="defer"></script>
+    <!-- <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script> -->
+    
+    {% if settings.quickView %}
+    <script src="{{ 'quickview.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'inlineProductForm.js' | asset_url }}" defer="defer"></script>
+    <script>
+      {% capture content %}{% render 'quickview' %}{% endcapture %}
+      var content = {{ content | json }};
+      var assetUrl = `{{ 'quickview.js' | asset_url }}`;
+        </script>
+    {% endif %}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      :root {
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: {{ settings.type_body_font.style }};
+        --font-body-weight: {{ settings.type_body_font.weight }};
+
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-style: {{ settings.type_header_font.style }};
+        --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }},0.75;
+        --color-header-background: {{ settings.header-background }};
+        --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{ settings.colors_background_1.blue }};
+        --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{ settings.colors_background_2.blue }};
+        --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+        --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{ settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+        --color-base-accent-1: {{ settings.colors_accent_1.red }}, {{ settings.colors_accent_1.green }}, {{ settings.colors_accent_1.blue }};
+        --color-base-accent-2: {{ settings.colors_accent_2.red }}, {{ settings.colors_accent_2.green }}, {{ settings.colors_accent_2.blue }};
+        --payment-terms-background-color: {{ settings.colors_background_1 }};
+        --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+      }
+      @media(min-width: 1400px){
+        :root {
+        --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: 1.8;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+
+      @media screen and (min-width: 750px) {
+        body {
+          font-size: 1.6rem;
+        }
+      }
+    {% endstyle %}
+
+    {% if settings.quickView %}{{ 'quickview.css' | asset_url | stylesheet_tag }}{% endif %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'collection-new.css' | asset_url | stylesheet_tag }}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  {{ settings.codehead }}
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144580890-1"></script>
+  {% comment %} 
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-144580890-1');
+    </script>
+  {% endcomment %}
+
+  <!-- MKT added tracking code Start-->
+  <script>
+  function gtag_report_conversion(url) {
+    console.log("Add to Cart Event call");
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-561275878/JCuNCMnu-eQBEObH0YsC',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+  <!-- MKT added tracking code END-->
+  
+<!-- Global site tag (gtag.js) - Google Ads: 561275878 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-561275878"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-753684101');
+  gtag('config', 'AW-561275878');
+</script>
+  
+<meta name="google-site-verification" content="aHCcm2_bezVft044sHwlaCcO1kKn6VooJiMMHuUJ5fI" /> 
+
+
+
+<!--begin-boost-pfs-filter-css-->
+  {% render 'boost-pfs-style' %}
+<!--end-boost-pfs-filter-css-->
+
+ 
+</head>
+
+  <body>
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ "accessibility.skip_to_text" | t }}
+    </a>
+    {{ settings.codebody }}
+    
+    
+    {% comment %}
+    <sticky-header class="header-wrapper headerWrap" data-position="{{ settings.announcementposition }}">
+      {% endcomment %}
+      
+
+      {%- liquid 
+        case settings.announcementposition
+        when 'above'
+          section 'announcement-bar'
+          section 'header'
+        else
+          section 'header'
+          section 'announcement-bar'
+        endcase -%}
+
+       {% comment %} 
+    </sticky-header>
+    {% endcomment %}
+    <main id="MainContent" class="content-for-layout {{ page.handle }} focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+
+    {% comment %}
+    {%- section 'region-modal-section' -%}
+    
+    {%- section 'popup_newsletter' -%}
+    {% endcomment %}
+
+{% render 'sticky-icon' %}
+
+
+    <script>
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        inventory_enable: {{ settings.inventory_enable | json }},
+        preordermsg: {{ settings.preordermsg | default: false | json }},
+        inventory_threshold: {{ settings.inventory_threshold | json }},
+        inventory_transfers_enable: {{ settings.inventory_transfers_enable | json }}
+      }
+      window.currency = {
+        moneyFormat: {{ shop.money_format | json }},
+        moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }}
+      };
+    </script>
+    {{ settings.codefooter }}
+  
+
+    {% render 'afterpay' %}
+
+
+<!--begin-boost-pfs-js-->
+  
+
+    
+    <!-- Stamped - Begin Script-->
+<script async type="text/javascript" data-api-key="pubkey-2SuDgn90ci9jJcI2FsWZq4SeU162k0" id="stamped-script-widget" src="https://cdn1.stamped.io/files/widget.min.js"></script>
+<!-- Stamped - End Script --><br>
+	
+
+
+
+
+ <!--begin-boost-pfs-js-->
+   
+ <!--end-boost-pfs-js-->
+
+ <!--begin-boost-pfs-js-->
+   {% render 'boost-pfs' %}
+ <!--end-boost-pfs-js-->
+<script src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="peekkids123.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}"></script>
+    {% render 'swymSnippet' %}
+{% render 'spurit_dmr_theme_snippet' %}
+</body>
+</html>

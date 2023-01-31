@@ -1,0 +1,283 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1647426183d2a2648d": {
+      "type": "custom-image-banner",
+      "blocks": {
+        "164742618396c0289f-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet  <span class=\"highlight\">consectetur <\/span>elit",
+            "heading_size": "large"
+          }
+        },
+        "164742618396c0289f-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template."
+          }
+        },
+        "164742618396c0289f-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "164742618396c0289f-0",
+        "164742618396c0289f-1",
+        "164742618396c0289f-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20201101_PEEK_ELENAFONG_146.png",
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "content_horizontal": "left",
+        "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 60,
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "16474347016d35770b": {
+      "type": "section-breadcrumb",
+      "settings": {
+      }
+    },
+    "1647426400518a0918": {
+      "type": "image-with-text-new",
+      "blocks": {
+        "16474264000b043518-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "OVERVIEW CONTENT GOES HERE",
+            "heading_color": "#e48a59"
+          }
+        },
+        "16474264000b043518-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\nexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\ndolor in reprehenderit in voluptate veli.<\/p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\nexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\ndolor in reprehenderit in voluptate veli.<\/p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\nexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\ndolor in reprehenderit in voluptate veli.<\/p>",
+            "text_color": "#444444"
+          }
+        },
+        "16474264000b043518-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16474264000b043518-0",
+        "16474264000b043518-1",
+        "16474264000b043518-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/20210228_PEEK_EDWARDS_149.png",
+        "height": "adapt",
+        "color_scheme": "background-1",
+        "layout": "image_first",
+        "full_width": true,
+        "bg_color": "rgba(0,0,0,0)"
+      }
+    },
+    "16474277590e7c26fd": {
+      "type": "section-faq",
+      "blocks": {
+        "5ac19901-d2ee-4f98-98c8-55feb01958db": {
+          "type": "heading",
+          "settings": {
+            "heading": "Size Guide",
+            "image": "shopify:\/\/shop_images\/HN5A0350.png",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "Q3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "Q4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "Q5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "Q6: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        },
+        "4c49ffeb-7eae-437f-8042-8a55fee82300": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping & Delivery",
+            "image": "shopify:\/\/shop_images\/HN5A0350.png",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        },
+        "651e02dd-e2cb-4963-892d-986e14b82bb4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Promotions Policy",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "Q3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        },
+        "b45a6230-b391-498b-bff0-a6411c4a5495": {
+          "type": "heading",
+          "settings": {
+            "heading": "Return & Exchange Policy",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "Q3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "Q4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "Q5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "Q6: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "Q7: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "Q8: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "Q9: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "Q10: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        },
+        "49194d4d-3d05-479e-9437-77807c9bb9c6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Privacy Policy",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "Q3: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "Q4: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "Q5: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        },
+        "1875aad5-8461-4dc6-8ce9-9c3720f1c5ab": {
+          "type": "heading",
+          "settings": {
+            "heading": "Terms of Use",
+            "que1": "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans1": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que2": "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+            "ans2": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que3": "",
+            "ans3": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que4": "",
+            "ans4": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que5": "",
+            "ans5": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que6": "",
+            "ans6": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que7": "",
+            "ans7": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que8": "",
+            "ans8": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que9": "",
+            "ans9": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>",
+            "que10": "",
+            "ans10": "<p>Ans. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "5ac19901-d2ee-4f98-98c8-55feb01958db",
+        "4c49ffeb-7eae-437f-8042-8a55fee82300",
+        "651e02dd-e2cb-4963-892d-986e14b82bb4",
+        "b45a6230-b391-498b-bff0-a6411c4a5495",
+        "49194d4d-3d05-479e-9437-77807c9bb9c6",
+        "1875aad5-8461-4dc6-8ce9-9c3720f1c5ab"
+      ],
+      "settings": {
+        "title": "FREQUENTLY ASKED QUESTIONS"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1647426183d2a2648d",
+    "16474347016d35770b",
+    "1647426400518a0918",
+    "16474277590e7c26fd"
+  ]
+}

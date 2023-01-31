@@ -1,0 +1,499 @@
+{
+  "current": {
+    "colors_accent_1": "#0f716d",
+    "colors_accent_2": "#0f716d",
+    "colors_text": "#444444",
+    "type_header_font": "montserrat_n6",
+    "type_body_font": "varela_round_n4",
+    "announcementmessage_slider": true,
+    "announcementautoplay": false,
+    "announcementcolor_bg": "#0f716d",
+    "announcementcolor_text": "#fff",
+    "page_width": "1600",
+    "collection_color_swatchesProductpage": true,
+    "productquickView": true,
+    "show_dynamic_checkout": false,
+    "social_facebook_link": "https:\/\/www.facebook.com\/PeekKids",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/peekkids",
+    "favicon": "shopify:\/\/shop_images\/fevicon.png",
+    "button_link_1": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Peek_Logo_0c225932-71a0-4119-a368-7c05a75490ff.png",
+    "checkout_accent_color": "#ff8100",
+    "checkout_button_color": "#ff8100",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "b2ac72b7-f3bf-4b80-b890-73c9e468007d": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Girls (2T-12)",
+              "linksLimits": 8,
+              "submenu_1": true,
+              "colspan_1": true,
+              "submenu_title_1": "GIRLS - SIZE 2T-12",
+              "submenu_link_1": "girls-2t-12",
+              "submenu_2": true,
+              "colspan_2": false,
+              "submenu_title_2": "Featured",
+              "submenu_link_2": "",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Dresses",
+              "banner1": "shopify:\/\/shop_images\/700x700.jpg",
+              "banner_url1": "shopify:\/\/collections\/girls-dresses",
+              "banner_title_2": "New Arrivals",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/header2.png",
+              "banner_url_2": "shopify:\/\/collections\/girls-new-arrivals",
+              "banner_title_3": "New Arrivals",
+              "banner_image_Show3": false,
+              "banner_url_3": "",
+              "banner_title_4": "",
+              "banner_image_Show4": false,
+              "banner_url_4": "",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "2d211584-9c3b-4731-9f53-e0de6dd97762": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Boys (2T-12)",
+              "linksLimits": 6,
+              "submenu_1": true,
+              "colspan_1": true,
+              "submenu_title_1": "BOYS - SIZE 2T-12",
+              "submenu_link_1": "boys-2t-12",
+              "submenu_2": true,
+              "colspan_2": false,
+              "submenu_title_2": "SHOP PAGE",
+              "submenu_link_2": "",
+              "submenu_3": true,
+              "colspan_3": false,
+              "submenu_title_3": "PRODUCTS PAGE",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "MENU - 4",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Hoodies & Sweaters",
+              "banner1": "shopify:\/\/shop_images\/470x530.jpg",
+              "banner_url1": "shopify:\/\/collections\/boys-sweaters-and-sweatshirts",
+              "banner_title_2": "New Arrivals",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/470x530_magma.jpg",
+              "banner_url_2": "shopify:\/\/collections\/boys-new-arrivals",
+              "banner_title_3": "New Arrivals",
+              "banner_image_Show3": false,
+              "banner_image_3": "shopify:\/\/shop_images\/PeekKids_menu-banner.jpg",
+              "banner_url_3": "",
+              "banner_title_4": "",
+              "banner_image_Show4": false,
+              "banner_url_4": "",
+              "product_list_title": "NEW PRODUCTS",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "b26d93bd-fd18-416f-81b6-4bdc8284c1ce": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Baby Boys (3-24M)",
+              "linksLimits": 6,
+              "submenu_1": true,
+              "colspan_1": true,
+              "submenu_title_1": "Baby Boys (3-24M)",
+              "submenu_link_1": "baby-boys-3-24m",
+              "submenu_2": true,
+              "colspan_2": false,
+              "submenu_title_2": "SHOP PAGE",
+              "submenu_link_2": "",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Rompers & Coveralls",
+              "banner1": "shopify:\/\/shop_images\/20190124_PEEK_LUCKY096.jpg",
+              "banner_url1": "shopify:\/\/collections\/baby-boys-rompers-coveralls",
+              "banner_title_2": "New Arrivals",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/20190927_PEEK_LIV_MILA_041_61821d08-d081-4b47-8725-7ed19be93551.jpg",
+              "banner_url_2": "shopify:\/\/collections\/baby-boy-new-arrivals",
+              "banner_title_3": "Sets",
+              "banner_image_Show3": true,
+              "banner_image_3": "shopify:\/\/shop_images\/Photo_Jun_11_11_22_53_AM.png",
+              "banner_url_3": "shopify:\/\/collections\/baby-boys-sets",
+              "banner_title_4": "",
+              "banner_image_Show4": true,
+              "banner_url_4": "",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "0f1d9323-5bd2-4acb-8b4a-d3309f3c8656": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Baby Girls (3-24M)",
+              "linksLimits": 6,
+              "submenu_1": true,
+              "colspan_1": true,
+              "submenu_title_1": "Baby Girls (3-24M)",
+              "submenu_link_1": "baby-girls-3-24m",
+              "submenu_2": false,
+              "colspan_2": false,
+              "submenu_title_2": "SHOP PAGE",
+              "submenu_link_2": "baby-girls-3-24m",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Rompers & Coveralls",
+              "banner1": "shopify:\/\/shop_images\/peek-18.jpg",
+              "banner_url1": "shopify:\/\/collections\/baby-girls-rompers-coveralls",
+              "banner_title_2": "New Arrivals",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/2V9A1748_1.jpg",
+              "banner_url_2": "shopify:\/\/collections\/baby-girls-new-arrivals",
+              "banner_title_3": "Dresses",
+              "banner_image_Show3": true,
+              "banner_image_3": "shopify:\/\/shop_images\/20190112_PEEK_KAIA020.jpg",
+              "banner_url_3": "shopify:\/\/collections\/baby-girls-dresses",
+              "banner_title_4": "",
+              "banner_image_Show4": true,
+              "banner_url_4": "",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "face878d-56b8-4d34-907e-9d0f3ebe2962": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Featured Collections",
+              "linksLimits": 6,
+              "submenu_1": false,
+              "colspan_1": false,
+              "submenu_title_1": "",
+              "submenu_link_1": "",
+              "submenu_2": false,
+              "colspan_2": false,
+              "submenu_title_2": "",
+              "submenu_link_2": "",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Graphic Tees",
+              "banner1": "shopify:\/\/shop_images\/Untitled_470_x_530_px.jpg",
+              "banner_url1": "shopify:\/\/collections\/shop-all-graphic-tees",
+              "banner_title_2": "Valentine's Day Collection",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/470_x_530Untitled_design_-_2022-09-30T123753.073.jpg",
+              "banner_url_2": "shopify:\/\/collections\/valentines-day",
+              "banner_title_3": "Play & Learn",
+              "banner_image_Show3": true,
+              "banner_image_3": "shopify:\/\/shop_images\/470_530_play_and_learn.jpg",
+              "banner_url_3": "shopify:\/\/collections\/play-and-learn",
+              "banner_title_4": "",
+              "banner_image_Show4": false,
+              "banner_url_4": "",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "d5ba600c-c3dd-465e-ae5d-f9f8033b53bd": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu": "Sale",
+              "linksLimits": 6,
+              "submenu_1": true,
+              "colspan_1": false,
+              "submenu_title_1": "",
+              "submenu_link_1": "",
+              "submenu_2": false,
+              "colspan_2": false,
+              "submenu_title_2": "",
+              "submenu_link_2": "",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "Girls Sale",
+              "banner1": "shopify:\/\/shop_images\/20190203_SG_Khagani_Peek_027.jpg",
+              "banner_url1": "shopify:\/\/collections\/girls-sale",
+              "banner_title_2": "Boys Sale",
+              "banner_image_Show2": true,
+              "banner_image_2": "shopify:\/\/shop_images\/20200730_PEEK_LUCIANO_030.jpg",
+              "banner_url_2": "shopify:\/\/collections\/boys-sale",
+              "banner_title_3": "Baby Girls Sale",
+              "banner_image_Show3": true,
+              "banner_image_3": "shopify:\/\/shop_images\/20210404_PEEK_HARTLEY_007.jpg",
+              "banner_url_3": "shopify:\/\/collections\/baby-girls-sale",
+              "banner_title_4": "Baby Boys Sale",
+              "banner_image_Show4": true,
+              "banner_image_4": "shopify:\/\/shop_images\/20190711_PEEK_EVA_127.jpg",
+              "banner_url_4": "shopify:\/\/collections\/sale-baby-boys",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          },
+          "55fdd79c-7275-4de3-ae81-6d54af863f97": {
+            "type": "mega_menu",
+            "disabled": true,
+            "settings": {
+              "mega_menu": "E-Gift Cards",
+              "linksLimits": 6,
+              "submenu_1": false,
+              "colspan_1": false,
+              "submenu_title_1": "",
+              "submenu_link_1": "",
+              "submenu_2": false,
+              "colspan_2": false,
+              "submenu_title_2": "",
+              "submenu_link_2": "",
+              "submenu_3": false,
+              "colspan_3": false,
+              "submenu_title_3": "",
+              "submenu_link_3": "",
+              "submenu_4": false,
+              "colspan_4": false,
+              "submenu_title_4": "",
+              "submenu_link_4": "",
+              "bannerShow1": true,
+              "banner_title_1": "",
+              "banner_url1": "",
+              "banner_title_2": "",
+              "banner_image_Show2": true,
+              "banner_url_2": "",
+              "banner_title_3": "",
+              "banner_image_Show3": true,
+              "banner_url_3": "",
+              "banner_title_4": "",
+              "banner_image_Show4": true,
+              "banner_url_4": "",
+              "product_list_title": "",
+              "submenu_product_1": "",
+              "submenu_product_2": "",
+              "submenu_product_3": "",
+              "submenu_product_4": ""
+            }
+          }
+        },
+        "block_order": [
+          "b2ac72b7-f3bf-4b80-b890-73c9e468007d",
+          "2d211584-9c3b-4731-9f53-e0de6dd97762",
+          "b26d93bd-fd18-416f-81b6-4bdc8284c1ce",
+          "0f1d9323-5bd2-4acb-8b4a-d3309f3c8656",
+          "face878d-56b8-4d34-907e-9d0f3ebe2962",
+          "d5ba600c-c3dd-465e-ae5d-f9f8033b53bd",
+          "55fdd79c-7275-4de3-ae81-6d54af863f97"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Peek_Logo_0c225932-71a0-4119-a368-7c05a75490ff.png",
+          "logo_width": 100,
+          "logo_position": "middle-left",
+          "menu": "main-menu-new",
+          "show_line_separator": true,
+          "enable_sticky_header": false,
+          "wishlist": true,
+          "wishlistLink": "https:\/\/peekkids.com\/pages\/swym-wishlist?",
+          "mobilemenu": "main-menu-new",
+          "richtext2": "<p><a href=\"mailto:customerservice@peekkids.com\" title=\"mailto:customerservice@peekkids.com\">customerservice@peekkids.com<\/a><br\/><a href=\"\/pages\/size-guide\" title=\"Size Guide\">Size Guide<\/a><br\/><a href=\"\/pages\/delivery-shipping\" title=\"Shipping & Delivery\">Shipping & Delivery<\/a><br\/><a href=\"\/pages\/return-exchange-policy\" title=\"Return & Exchange Policy\">Returns & Exchanges<\/a><\/p>"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Customer Care",
+              "menu": "footer"
+            }
+          },
+          "bee537be-58c2-4d98-8ce0-fb7e47f3ad0d": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Peek Kids",
+              "menu": "peek-kids"
+            }
+          },
+          "fdaf1d79-9219-46c1-8fcc-47ca9653fb89": {
+            "type": "newsletter",
+            "settings": {
+              "heading": "Sign up for our emails"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "bee537be-58c2-4d98-8ce0-fb7e47f3ad0d",
+          "fdaf1d79-9219-46c1-8fcc-47ca9653fb89"
+        ],
+        "settings": {
+          "color_scheme": "accent-1",
+          "newsletter_position": "normal-view",
+          "newsletter_enable": true,
+          "newsletter_heading": "Sign up to our emails",
+          "show_social": true,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": false
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-2": {
+            "type": "text",
+            "settings": {
+              "announcement_text": "Final hours to save! 50% off sitewide, no code needed!",
+              "announcement_text_mobile": "Final hours to save! 50% off sitewide, no code needed!",
+              "announcement_link": "shopify:\/\/collections\/best-sellers-1"
+            }
+          },
+          "announcement-bar-1": {
+            "type": "text",
+            "settings": {
+              "announcement_text": "FREE SHIPPING ON ORDERS OVER $75",
+              "announcement_text_mobile": "FREE SHIPPING ON ORDERS OVER $75",
+              "announcement_link": "shopify:\/\/pages\/delivery-shipping"
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-2",
+          "announcement-bar-1"
+        ],
+        "settings": {
+        }
+      },
+      "popup_newsletter": {
+        "type": "popup_newsletter",
+        "settings": {
+          "display_popup_newsletter": "true",
+          "home_page_only": true,
+          "logo_max_width": 175,
+          "popup_newsletter_title": "Popup Newsletter Title",
+          "popup_newsletter_message": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers.<\/p>",
+          "popup_text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.<\/p>",
+          "close_text": "No thanks",
+          "popup_seconds": 0,
+          "popup_days": 25,
+          "popupSize": "500",
+          "newsletterStyle": "style3",
+          "display_popup_imgstyle": "static",
+          "banner_width": 40,
+          "headingPosition": "bellow",
+          "contentAlightment": "right",
+          "pop_up_newsletter_bg": "#9e3636",
+          "show_overlay": true,
+          "overlay_color": "#ffffff",
+          "overlay_opacity": 85,
+          "popup_TitleColor": "#000000",
+          "popup_Subtitle": "#000000",
+          "popup_textColor": "#000000",
+          "modalPadding": 15,
+          "formPadding": 15,
+          "newsletter_form_action": ""
+        }
+      },
+      "newsletter-bottom": {
+        "type": "newsletter-bottom",
+        "blocks": {
+          "0124787f-fcc1-4d56-b25c-168b55495e38": {
+            "type": "heading",
+            "settings": {
+              "heading": "Sign up for our emails"
+            }
+          },
+          "15c6e86e-d1fb-4c51-8d82-ad3d310f4669": {
+            "type": "paragraph",
+            "settings": {
+              "paragraph": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+            }
+          },
+          "c4538c23-d16c-4ff9-8d7f-07de5c625f0d": {
+            "type": "email_form",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "0124787f-fcc1-4d56-b25c-168b55495e38",
+          "15c6e86e-d1fb-4c51-8d82-ad3d310f4669",
+          "c4538c23-d16c-4ff9-8d7f-07de5c625f0d"
+        ],
+        "settings": {
+          "color_scheme": "inverse",
+          "background_attachment": "fixed",
+          "background_alignment": "fit",
+          "full_width": true
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "558381514691908246": {
+        "type": "shopify:\/\/apps\/volumeboost-volume-discount\/blocks\/app-embed\/25745434-52e7-4378-88f1-890df18a0110",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  }
+}

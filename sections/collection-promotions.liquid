@@ -1,0 +1,1126 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="promo-grid">
+  {% if section.blocks.size > 0 %}
+  <style>
+    .shopify-section .promo-grid {
+      padding-left: {{ section.settings.gutter_size }}px;
+      padding-right: {{ section.settings.gutter_size }}px;
+    }
+      .flex-grid--{{ section.id }} {
+        margin-bottom: {{ section.settings.gutter_size }}px;
+      }
+      </style>
+      {% render 'promo-grid', collection_page: true %}
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Collection promotions",
+    "class": "index-section--flush",
+    "settings": [
+      {
+        "type": "range",
+        "id": "gutter_size",
+        "label": "Spacing",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "advanced",
+        "name": "Advanced",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Limited time"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Announce your promotion"
+          },
+          {
+            "type": "textarea",
+            "id": "textarea",
+            "label": "Text",
+            "default": "Include the smaller details of your promotion in text below the title."
+          },
+          {
+            "type": "text",
+            "id": "cta_text1",
+            "label": "Button #1 text",
+            "default": "Shop This"
+          },
+          {
+            "type": "url",
+            "id": "cta_link1",
+            "label": "Button #1 link"
+          },
+          {
+            "type": "text",
+            "id": "cta_text2",
+            "label": "Button #2 text",
+            "default": "Shop All"
+          },
+          {
+            "type": "url",
+            "id": "cta_link2",
+            "label": "Button #2 link"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Layout"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "100",
+            "options": [
+              {
+                "value": "33",
+                "label": "33%"
+              },
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "height",
+            "label": "Height",
+            "default": 500,
+            "min": 100,
+            "max": 800,
+            "step": 20,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "text_size",
+            "label": "Text size",
+            "default": 100,
+            "min": 40,
+            "max": 200,
+            "step": 5,
+            "unit": "%"
+          },
+          {
+            "type": "header",
+            "content": "Alignment"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "default": "vertical-center horizontal-center",
+            "options": [
+              {
+                "value": "vertical-top horizontal-left",
+                "label": "Top left"
+              },
+              {
+                "value": "vertical-top horizontal-center",
+                "label": "Top center"
+              },
+              {
+                "value": "vertical-top horizontal-right",
+                "label": "Top right"
+              },
+              {
+                "value": "vertical-center horizontal-left",
+                "label": "Center left"
+              },
+              {
+                "value": "vertical-center horizontal-center",
+                "label": "Center"
+              },
+              {
+                "value": "vertical-center horizontal-right",
+                "label": "Center right"
+              },
+              {
+                "value": "vertical-bottom horizontal-left",
+                "label": "Center right"
+              },
+              {
+                "value": "vertical-bottom horizontal-center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "vertical-bottom horizontal-right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "focal_point",
+            "label": "Image focal point",
+            "default": "center",
+            "options": [
+              {
+                "value": "20% 0",
+                "label": "Top left"
+              },
+              {
+                "value": "top",
+                "label": "Top center"
+              },
+              {
+                "value": "80% 0",
+                "label": "Top right"
+              },
+              {
+                "value": "20% 50%",
+                "label": "Center left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "80% 50%",
+                "label": "Center right"
+              },
+              {
+                "value": "20% 100%",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom center"
+              },
+              {
+                "value": "80% 100%",
+                "label": "Bottom right"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Design"
+          },
+          {
+            "type": "color",
+            "id": "color_accent",
+            "label": "Buttons",
+            "default": "rgba(0,0,0,0)"
+          },
+          {
+            "type": "checkbox",
+            "id": "boxed",
+            "label": "Add box",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "framed",
+            "label": "Add frame",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Banner promotion"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Add the details of your promotion in smaller text"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Link label",
+            "default": "Shop now"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Design"
+          },
+          {
+            "type": "color",
+            "id": "color_tint",
+            "label": "Tint",
+            "default": "#000"
+          },
+          {
+            "type": "range",
+            "id": "color_tint_opacity",
+            "label": "Amount",
+            "default": 8,
+            "min": 0,
+            "max": 20,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "checkbox",
+            "id": "framed",
+            "label": "Add frame",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+			"info": "Image Size: 1370x540"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "100",
+            "options": [
+              {
+                "value": "33",
+                "label": "33%"
+              },
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Limited time"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Announce your product"
+          },
+          {
+            "type": "textarea",
+            "id": "textarea",
+            "label": "Text",
+            "default": "Include the smaller details of your promotion in text below the title."
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Button text",
+            "default": "Learn more"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "New"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_price",
+            "label": "Show price",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "100",
+            "options": [
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "text_size",
+            "label": "Text size",
+            "default": 100,
+            "min": 40,
+            "max": 200,
+            "step": 5,
+            "unit": "%"
+          },
+          {
+            "type": "header",
+            "content": "Design"
+          },
+          {
+            "type": "color",
+            "id": "color_tint",
+            "label": "Tint",
+            "default": "#000"
+          },
+          {
+            "type": "range",
+            "id": "color_tint_opacity",
+            "label": "Amount",
+            "default": 0,
+            "min": 0,
+            "max": 20,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "checkbox",
+            "id": "framed",
+            "label": "Add frame",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "sale_collection",
+        "name": "Sale Collection",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "collection",
+            "id": "sale_collection",
+            "label": "Sale collection"
+          },
+          {
+            "type": "text",
+            "id": "top_text",
+            "label": "Top text",
+            "default": "Up to"
+          },
+          {
+            "type": "text",
+            "id": "middle_text",
+            "label": "Middle text",
+            "default": "50% off"
+          },
+          {
+            "type": "text",
+            "id": "bottom_text",
+            "label": "Bottom text",
+            "default": "Select products"
+          },
+          {
+            "type": "header",
+            "content": "Layout"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "100",
+            "options": [
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Design"
+          },
+          {
+            "type": "color",
+            "id": "color_tint",
+            "label": "Tint",
+            "default": "#000"
+          },
+          {
+            "type": "range",
+            "id": "color_tint_opacity",
+            "label": "Amount",
+            "default": 0,
+            "min": 0,
+            "max": 20,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "checkbox",
+            "id": "boxed",
+            "label": "Add box",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "framed",
+            "label": "Add frame",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "simple",
+        "name": "Simple",
+        "settings": [
+          {
+            "label": "Only show promotion on",
+            "id": "promo_collection",
+            "type": "collection",
+            "info": "If no collection is chosen, your promotion will appear on all collections"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "SIMPLE PROMOTION"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+			"info": "Image Size: 1370x540"
+          },
+          {
+            "type": "header",
+            "content": "Layout"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "100",
+            "options": [
+              {
+                "value": "33",
+                "label": "33%"
+              },
+              {
+                "value": "50",
+                "label": "50%"
+              },
+              {
+                "value": "100",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "height",
+            "label": "Height",
+            "default": 540,
+            "min": 0,
+            "max": 800,
+            "step": 20,
+            "unit": "px"
+          },
+          {
+            "type": "header",
+            "content": "Design"
+          },
+          {
+            "type": "color",
+            "id": "color_tint",
+            "label": "Tint",
+            "default": "#000"
+          },
+          {
+            "type": "range",
+            "id": "color_tint_opacity",
+            "label": "Amount",
+            "default": 8,
+            "min": 0,
+            "max": 20,
+            "step": 2,
+            "unit": "%"
+          },
+          {
+            "type": "checkbox",
+            "id": "framed",
+            "label": "Add frame",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+.flex-grid{
+  display:flex;
+  flex-wrap:wrap;
+  flex:1 1 100%
+}
+
+[data-center-text=true] .flex-grid{
+    justify-content:center
+}
+
+.flex-grid--center{
+  align-items:center;
+}
+
+.flex-grid--gutters{
+  margin-top:-15px;
+  margin-left:-15px;
+}
+
+.flex-grid__item{
+  flex:0 1 100%;
+  display:flex;
+  align-items:stretch
+}
+
+.flex-grid--gutters .flex-grid__item{
+    padding-top:15px;
+    padding-left:15px
+}
+
+.flex-grid__item>*{
+    flex:1 1 100%;
+  }
+
+.flex-grid__item--stretch{
+  flex:1 1 100%
+}
+
+.flex-grid__item--stretch:first-child{
+    min-width:250px;
+  }
+
+@media only screen and (min-width:769px){
+  .flex-grid__item--33{
+    flex-basis:33.33%;
+  }
+
+  .flex-grid__item--50{
+    flex-basis:50%;
+  }
+}
+
+@media only screen and (max-width:768px){
+  .flex-grid__item--mobile-second{
+    order:2;
+  }
+}
+
+/*================ Promo grid ================*/
+.promo-grid--space-top {
+  padding-top: 40px; }
+  @media only screen and (min-width: 769px) {
+    .promo-grid--space-top {
+      padding-top: 75px; } }
+
+.promo-grid--space-bottom {
+  padding-bottom: 40px; }
+  @media only screen and (min-width: 769px) {
+    .promo-grid--space-bottom {
+      padding-bottom: 75px; } }
+
+.promo-grid__container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat; }
+  .promo-grid__container .btn {
+    margin-right: 10px; }
+    @media only screen and (max-width: 768px) {
+      .promo-grid__container .btn {
+        margin-right: 7px; } }
+  .promo-grid__container.horizontal-center {
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center; }
+    .promo-grid__container.horizontal-center .btn {
+      margin: 2px 5px; }
+  .promo-grid__container.horizontal-right {
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    text-align: right; }
+
+@media only screen and (max-width: 768px) {
+  .promo-grid__container--boxed .promo-grid__bg {
+    height: 60%; }
+  .promo-grid__container--boxed .promo-grid__content {
+    width: 100%;
+    margin-top: 55%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); } }
+
+.promo-grid__container--framed:not(.promo-grid__container--boxed):after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 7px solid transparent;
+  box-shadow: inset 0 0 0 2px white;
+  z-index: 2; }
+  @media only screen and (min-width: 769px) {
+    .promo-grid__container--framed:not(.promo-grid__container--boxed):after {
+      border-width: 10px; } }
+  .type-sale_collection .promo-grid__container--framed:not(.promo-grid__container--boxed):after, .type-product .promo-grid__container--framed:not(.promo-grid__container--boxed):after, .type-banner .promo-grid__container--framed:not(.promo-grid__container--boxed):after {
+    box-shadow: inset 0 0 0 2px black; }
+
+.video-interactable.promo-grid__container--framed:not(.promo-grid__container--boxed):after {
+  pointer-events: none; }
+
+.promo-grid__container--tint:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1;
+  pointer-events: none; }
+
+.promo-grid__slide-link {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 4; }
+  .promo-grid__slide-link:hover ~ .promo-grid__content .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse) {
+    background: #2b2b2b;
+    transition-delay: 0.25s; }
+    .promo-grid__slide-link:hover ~ .promo-grid__content .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):after {
+      animation: shine 0.75s cubic-bezier(0.01, 0.56, 1, 1); }
+
+/*================ Promo grid content ================*/
+.promo-grid__content {
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  padding: 2em 2.5em;
+  position: relative;
+  min-width: 200px;
+  z-index: 1; }
+  .promo-grid__container--framed:not(.promo-grid__container--boxed) .promo-grid__content {
+    margin: 1.5em; }
+  .promo-grid__content p:last-child {
+    margin-bottom: 0; }
+  .vertical-top .promo-grid__content {
+    -ms-flex-item-align: start;
+    align-self: flex-start; }
+  .vertical-center .promo-grid__content {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
+  .vertical-bottom .promo-grid__content {
+    -ms-flex-item-align: end;
+    align-self: flex-end; }
+
+.video-interactable .promo-grid__content {
+  pointer-events: none; }
+
+.promo-grid__content--boxed {
+  background: white;
+  color: black;
+  margin: 15px; }
+  @media only screen and (max-width: 768px) {
+    .promo-grid__content--boxed {
+      margin: 10px; } }
+
+.promo-grid__content--framed.promo-grid__content--boxed {
+  border: 7px solid white;
+  box-shadow: inset 0 0 0 2px black; }
+  @media only screen and (min-width: 769px) {
+    .promo-grid__content--framed.promo-grid__content--boxed {
+      border-width: 10px; } }
+
+.type-advanced .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale),
+.type-simple .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale) {
+  color: white; }
+  .type-advanced .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale) a,
+  .type-simple .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale) a {
+    color: white;
+    border-bottom: 2px solid white; }
+  .type-advanced .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale) .btn--inverse,
+  .type-simple .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale) .btn--inverse {
+    border-color: white; }
+  .type-advanced .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale):after,
+  .type-simple .promo-grid__content:not(.promo-grid__content--boxed):not(.promo-grid__content--sale):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 60%);
+    margin: -100px -200px -100px -200px;
+    z-index: 1; }
+
+/*================ Custom promo typography ================*/
+.type-advanced .rte--strong,
+.type-product .rte--strong,
+.type-sale_collection .rte--strong {
+  font-family: 'Tiemann', serif;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1;
+  text-transform: uppercase;
+  line-height: 1.1; }
+.type-advanced .rte--em,
+.type-product .rte--em,
+.type-sale_collection .rte--em {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.9375em;
+  line-height: 1.2; }
+
+.type-advanced .rte--strong,
+.type-product .rte--strong {
+  font-size: 1.6em;
+  line-height: 1.1; }
+
+@media only screen and (min-width: 769px) {
+  .type-advanced .rte--strong,
+  .type-product .rte--strong {
+    font-size: 2.125em; }
+
+  .type-product.flex-grid__item--50 .rte--strong, .type-product.flex-grid__item--33 .rte--strong {
+    font-size: 1.6em; } }
+/*================ Promo grid elements ================*/
+.promo-grid__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: left; }
+  .promo-grid__container:not(.promo-grid__container--boxed) .promo-grid__bg:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: black;
+    opacity: 0.1; }
+  .promo-grid__bg .placeholder-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: none;
+    width: auto;
+    padding: 0; }
+
+.video-interactable .promo-grid__bg:before {
+  pointer-events: none; }
+
+.promo-grid__bg-image {
+  z-index: 1;
+  opacity: 0; }
+  .no-js .promo-grid__bg-image {
+    opacity: 1; }
+  .promo-grid__bg-image.lazyloaded {
+    animation: fade-in 1s cubic-bezier(0.26, 0.54, 0.32, 1) 0s forwards;
+    transition: none; }
+
+.promo-grid__text {
+  position: relative;
+  z-index: 2; }
+  .promo-grid__text .btn {
+    margin-top: 2px;
+    margin-bottom: 2px; }
+
+/* ======================= Type: Advanced ===================== */
+.type-advanced .promo-grid__content {
+  padding: 2em; }
+  @media only screen and (max-width: 768px) {
+    .type-advanced .promo-grid__content {
+      padding: 1.5em; } }
+.type-advanced .btn {
+  margin-bottom: 10px; }
+  @media only screen and (max-width: 768px) {
+    .type-advanced .btn {
+      margin-bottom: 7px; } }
+
+/* ======================= Type: Sale Collection ===================== */
+.type-sale_collection {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-height: 600px; }
+  .type-sale_collection .promo-grid__container {
+    background: white;
+    -ms-flex-align: center;
+    align-items: center; }
+  .type-sale_collection .promo-grid__content {
+    padding: 2em;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    min-width: 0; }
+    @media only screen and (max-width: 768px) {
+      .type-sale_collection .promo-grid__content {
+        padding: 1em;
+        font-size: 0.9em; } }
+    @media only screen and (min-width: 769px) {
+      .type-sale_collection .promo-grid__content:not(.promo-grid__content--small-text) {
+        font-size: 1.5em; } }
+  .type-sale_collection .rte--block {
+    margin-bottom: 7.5px; }
+    .type-sale_collection .rte--block:last-child {
+      margin-bottom: 0; }
+  .type-sale_collection .rte--strong {
+    position: relative;
+    display: block;
+    font-size: 3.375em;
+    line-height: 1;
+    white-space: nowrap; }
+  .type-sale_collection small {
+    display: inline;
+    font-size: 0.25em;
+    margin-left: -2.9em;
+    letter-spacing: 0; }
+
+.type-sale-images {
+  -ms-flex: 1 1 50%;
+  flex: 1 1 50%; }
+  .type-sale-images svg {
+    display: block;
+    width: 50%;
+    float: left; }
+
+.type-sale-images__crop {
+  overflow: hidden;
+  width: 100%; }
+
+.type-sale-images__image {
+  width: 50%;
+  float: left; }
+
+/* ======================= Type: Simple ===================== */
+.type-simple .promo-grid__content {
+  padding: 30px; }
+  @media only screen and (max-width: 768px) {
+    .type-simple .promo-grid__content {
+      padding: 15px; } }
+
+.promo-grid__title:last-child {
+  margin-bottom: 0; }
+
+/* ======================= Type: Image ===================== */
+.type-image .promo-grid__container {
+  background: none; }
+.type-image img,
+.type-image a,
+.type-image .image-wrap {
+  width: 100%; }
+
+/*================ Type: Banner ================*/
+.type-banner {
+  -ms-flex: 1 0 100%;
+  flex: 1 0 100%; }
+  .type-banner .promo-grid__container {
+    background: none; }
+  .type-banner .promo-grid__container--framed:not(.promo-grid__container--boxed) {
+    padding: 1em; }
+  .type-banner p {
+    margin: 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2; }
+
+.type-banner__link {
+  display: block;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%; }
+
+.type-banner__content {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 10px; }
+
+.type-banner__text {
+  position: relative;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  z-index: 2;
+  padding: 10px 20px; }
+
+.type-banner__image {
+  -ms-flex: 0 0 45%;
+  flex: 0 0 45%; }
+  @media only screen and (min-width: 769px) {
+    .type-banner__image {
+      -ms-flex: 0 0 200px;
+      flex: 0 0 200px; } }
+
+/*================ Type: Product ================*/
+.type-product__wrapper {
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  position: relative;
+  padding: 2em 0;
+  z-index: 3; }
+  .type-product__wrapper.promo-grid__container--tint, .promo-grid__container--framed .type-product__wrapper {
+    padding: 2em; }
+
+@media only screen and (max-width: 768px) {
+  .type-product__content {
+    margin-top: 15px; } }
+
+.type-product__images {
+  position: relative;
+  width: 100%;
+  margin: 10px 0 10px 10px; }
+
+.type-product__image {
+  position: relative; }
+  .type-product__image:first-child {
+    width: 100%;
+    max-width: 75%; }
+  .type-product__image:nth-child(2) {
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    width: 100%;
+    max-width: 30%; }
+
+.type-product__labels {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 2;
+  text-align: right; }
+  @media only screen and (min-width: 769px) {
+    .type-product__labels .flex-grid__item--50,
+    .type-product__labels .flex-grid__item--33 {
+      font-size: 0.9em; } }
+
+.type-product__label {
+  padding: 4px 12px;
+  background-color: #111111;
+  color: white;
+  float: right;
+  clear: both; }
+
+.type-product__label--secondary {
+  background-color: white;
+  color: black; }
+
+
+  @keyframes fade-in {
+    from {
+      opacity: 0; }
+  
+    to {
+      opacity: 1; } }
+  
+
+      @keyframes shine {
+        100% {
+          left: -200%; } }
+/*================ View-specific styles ================*/
+{% endstylesheet %}
+

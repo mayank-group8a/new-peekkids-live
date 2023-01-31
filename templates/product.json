@@ -1,0 +1,257 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "product-size-chart-enabled": true,
+            "link_label": "Size Chart",
+            "page": "size-guide"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "collapsible_tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "content": "<p>{{ product.metafields.descriptors.details_care | metafield_tag }}<\/p>",
+            "page": "",
+            "icon": "none"
+          }
+        },
+        "collapsible_tab-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "content": "",
+            "page": "",
+            "icon": "none"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "collapsible_tab-1",
+        "collapsible_tab-2",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "enable_video_looping": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "blocks": {
+        "1dd4dc63-6037-41c9-8847-df78ccc33c54": {
+          "type": "Product",
+          "settings": {
+            "c_product": "ahoy-play-mates-pant-set"
+          }
+        },
+        "727235aa-5ba3-4fb3-86da-088c4c9b69e6": {
+          "type": "Product",
+          "settings": {
+            "c_product": "aiming-for-the-stars-coverall"
+          }
+        },
+        "2560e553-a332-4dd8-9f47-7415d930d709": {
+          "type": "Product",
+          "settings": {
+            "c_product": "always-exploring-tee"
+          }
+        },
+        "abcac8b7-c3ba-4352-899b-8bd0d20862d2": {
+          "type": "Product",
+          "settings": {
+            "c_product": "aop-front-pocket-coverall"
+          }
+        },
+        "333a81ac-aa11-460b-afe5-a40a67e33408": {
+          "type": "Product",
+          "settings": {
+            "c_product": "ashton-knit-denim-pant"
+          }
+        }
+      },
+      "block_order": [
+        "1dd4dc63-6037-41c9-8847-df78ccc33c54",
+        "727235aa-5ba3-4fb3-86da-088c4c9b69e6",
+        "2560e553-a332-4dd8-9f47-7415d930d709",
+        "abcac8b7-c3ba-4352-899b-8bd0d20862d2",
+        "333a81ac-aa11-460b-afe5-a40a67e33408"
+      ],
+      "settings": {
+        "show_product_recommendations": "dynamic",
+        "heading": "EXPLORE MORE",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "autoplay": false,
+        "autorotate_speed": 3,
+        "sliderLoop": false,
+        "pauseOnHover": false,
+        "desktopInit": true,
+        "desktopShow": 4,
+        "desktopArrows": true,
+        "desktopDots": false,
+        "tabInit": true,
+        "tabShow": 4,
+        "tabArrows": true,
+        "tabDots": false,
+        "mobileInit": true,
+        "mobileShow": 2,
+        "mobileArrows": true,
+        "mobileDots": true
+      }
+    },
+    "164448908100398ff2": {
+      "type": "logo-bar-with-text",
+      "disabled": true,
+      "blocks": {
+        "164448908135037de4-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/picture.png",
+            "title": "UVP #1 GOES HERE",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid<\/p>",
+            "link": ""
+          }
+        },
+        "164448908135037de4-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/picture.png",
+            "title": "UVP #2 GOES HERE",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid<\/p>",
+            "link": ""
+          }
+        },
+        "164448908135037de4-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/picture.png",
+            "title": "UVP #3 GOES HERE",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid<\/p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "164448908135037de4-0",
+        "164448908135037de4-1",
+        "164448908135037de4-2"
+      ],
+      "settings": {
+        "title": "What Makes Us Different",
+        "autoplay": false,
+        "autorotate_speed": 3,
+        "sliderLoop": true,
+        "pauseOnHover": false,
+        "desktopInit": true,
+        "desktopShow": 3,
+        "desktopArrows": false,
+        "desktopDots": false,
+        "tabInit": true,
+        "tabShow": 3,
+        "tabArrows": false,
+        "tabDots": false,
+        "mobileInit": true,
+        "mobileShow": 1,
+        "mobileArrows": false,
+        "mobileDots": true
+      }
+    },
+    "product-review": {
+      "type": "product-review",
+      "settings": {
+        "title": "RATING AND REVIEWS",
+        "custom_liquid": "<!--Stamped - Begin Main Widget -->\n<div \nid=\"stamped-main-widget\"   \ndata-product-id=\"{{ product.id }}\"   \ndata-name=\"{{ product.title | escape }}\"   \ndata-url=\"{{ shop.url }}{{ product.url }}\"   \ndata-image-url=\"{{ product.featured_image | product_img_url: \"large\" |replace: '?', '%3F' | replace: '&','%26'}}\" \ndata-description=\"{{ product.description | escape }}\"   \ndata-product-sku=\"{{product.handle}}\"\ndata-product-title=\"{{product.title}}\" \ndata-product-type=\"{{product.type}}\">   \n{{product.metafields.stamped.reviews}}   \n<\/div>\n<!-- Stamped - End Main Widget -->"
+      }
+    },
+    "16526965708506f934": {
+      "type": "apps",
+      "blocks": {
+        "27bb6771-7857-4b3c-8d26-df1c0054e532": {
+          "type": "shopify:\/\/apps\/stamped-product-reviews-ugc\/blocks\/badge-double-image\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "disabled": true,
+          "settings": {
+            "api_key": "",
+            "store_hash": "",
+            "label1": "",
+            "label2": "",
+            "width": "",
+            "height": ""
+          }
+        },
+        "95a7791a-899a-4ad2-8c79-4146352a0422": {
+          "type": "shopify:\/\/apps\/stamped-product-reviews-ugc\/blocks\/main-widget\/a103faaf-2125-4b0e-89fa-de5149736723",
+          "disabled": true,
+          "settings": {
+            "animation": true,
+            "tags_exclude": "",
+            "tags_include": "",
+            "search": "",
+            "linkify": true,
+            "use_metafields": true,
+            "sku_tagtype": "sku"
+          }
+        }
+      },
+      "block_order": [
+        "27bb6771-7857-4b3c-8d26-df1c0054e532",
+        "95a7791a-899a-4ad2-8c79-4146352a0422"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "164448908100398ff2",
+    "product-review",
+    "16526965708506f934"
+  ]
+}

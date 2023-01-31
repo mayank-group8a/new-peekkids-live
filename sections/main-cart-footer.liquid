@@ -1,0 +1,290 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  {% capture gift_wrapping %}
+  {% render 'gift-wrapping--options' %}
+  {% endcapture %}
+{% endcomment %}
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div class="grid grid--1-col grid--2-col-tablet grid--2-col-desktop">
+    <div class="cart-footer-left grid__item ">
+    
+    {%- if section.settings.enabled -%}{%- render 'gift-wrapping' -%}{%- endif -%}
+    </div>
+    {% comment %}
+    {% if section.settings.enabled %}
+    {% render 'gift-wrapping--options' %}
+    {% endif %}
+    {% endcomment %}
+    <div class="cart__footer grid__item limoniapps-discountninja-cart-root">
+      {%- if section.settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea class="text-area text-area--resize-vertical field__input" name="note" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+
+      <div class="cart__blocks">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div class="totals">
+                  <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>
+                  <p  data-hulkapps-cart-total class="totals__subtotal-value limoniapps-discountninja-cart-subtotal-price">{{ cart.total_price | money_with_currency }}</p>
+                </div>
+                <p class="shipping-taxes-notification" style="text-align: right;font-size: 1.3rem;">We do not ship to P.O. BOX & Military Addresses. Shipping & taxes calculated at checkout. View our <a href="https://peekkids.com/pages/terms-of-use">Terms & Contitions</a> and <a href="https://peekkids.com/pages/private-policy">Privacy Policy</a></p>
+
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--end">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                <small class="tax-note caption-large rte">
+                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif cart.taxes_included -%}
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                </small>
+              </div>
+            {%- else -%}
+        <p class="ssl-cc-info" style="text-align: right;font-size: 1.3rem;">
+          <span><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="13px" height="13px" viewBox="0 0 401.998 401.998" style="enable-background:new 0 0 401.998 401.998;"
+	 xml:space="preserve">
+<g>
+	<path d="M357.45,190.721c-5.331-5.33-11.8-7.993-19.417-7.993h-9.131v-54.821c0-35.022-12.559-65.093-37.685-90.218
+		C266.093,12.563,236.025,0,200.998,0c-35.026,0-65.1,12.563-90.222,37.688C85.65,62.814,73.091,92.884,73.091,127.907v54.821
+		h-9.135c-7.611,0-14.084,2.663-19.414,7.993c-5.33,5.326-7.994,11.799-7.994,19.417V374.59c0,7.611,2.665,14.086,7.994,19.417
+		c5.33,5.325,11.803,7.991,19.414,7.991H338.04c7.617,0,14.085-2.663,19.417-7.991c5.325-5.331,7.994-11.806,7.994-19.417V210.135
+		C365.455,202.523,362.782,196.051,357.45,190.721z M274.087,182.728H127.909v-54.821c0-20.175,7.139-37.402,21.414-51.675
+		c14.277-14.275,31.501-21.411,51.678-21.411c20.179,0,37.399,7.135,51.677,21.411c14.271,14.272,21.409,31.5,21.409,51.675V182.728
+		z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+SSL Secure Checkout. Safe. Fast. Easy.</span>
+          </p>
+              <div class="cart__ctas" {{ block.shopify_attributes }}>
+                
+                <noscript>
+                  <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                    {{ 'sections.cart.update' | t }}
+                  </button>
+                </noscript>
+
+                <button type="submit" class="cart__checkout-button button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+              </div>
+        
+        <div class="payment-icon">
+        <img class="cc-image" src="{{ 'cc.jpg' | asset_img_url: 'large' }}" alt="">
+        </div>
+        
+        <a href="/pages/globalshopex-checkout" class="button checkout-button" style="margin-top: 10px;color: #ffffff;text-align: center;width: 100%;text-transform: uppercase;" name="globalshopex-checkout" id="gsx-btn" data-uw-styling-context="true">International Checkout</a>
+
+        {% comment %}
+        {% endcomment %}
+        {%- if additional_checkout_buttons -%}      
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+        
+              {%- endif -%}
+        
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+    <div class="giftwrapping">
+      {{gift_wrapping}}
+      </div>
+    {% render 'donate-source' %}
+  </div>
+</div>
+
+{% javascript %}
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "default": false,
+      "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+    },
+	{
+        "type":"header",
+        "content":"Gift Wrapping Options"
+      },
+      {
+      "type":"checkbox",
+      "id":"enabled",
+      "label":"Enable Gift Wrapping",
+      "default":true,
+      "info":"Only displayed when there are items in the cart"
+       },
+       {
+        "type":"header",
+        "content":"Free Gift Message"
+        },
+      {
+      "type":"checkbox",
+      "id":"free_gift_enabled",
+      "label":"Enable Gift Message",
+      "default":true
+    },
+    {
+      "type":"text",
+      "id":"free_gift_title",
+      "label":"Title"
+    },
+    {
+      "type":"text",
+      "id":"free_gift_text",
+      "label":"Description",
+      "default": "Is this a gift? Select and add your gift message below."
+      
+    },
+    {
+      "type":"image_picker",
+      "id":"free_gift_image",
+      "label":"Image",
+      "info":"Leave empty for default icon"
+    },
+    {
+      "type":"text",
+      "id":"free_gift_button",
+      "label":"Button Text",
+      "default": "SELECT"
+    },
+    {
+      "type":"text",
+      "id":"free_gift_button_remove",
+      "label":"Button Text (Remove)",
+      "default": "x REMOVE"
+    },
+    {
+      "type":"header",
+      "content":"Paid Gift Wrapping"
+    },
+    {
+      "type":"checkbox",
+      "id":"paid_gift_enabled",
+      "label":"Enable Paid Gift Wrapping",
+      "default":true
+    },
+    {
+      "type":"text",
+      "id":"paid_gift_title",
+      "label":"Title"
+    },
+      {
+      "type":"text",
+      "id":"paid_gift_text",
+      "label":"Description",
+      "default": "Add Gift Box (wrapping) & Gift Card for an additional <price></price>"
+      },
+       {
+      "type":"image_picker",
+      "id":"paid_gift_image",
+      "label":"Image",
+      "info":"Leave empty for default icon"
+      },
+       {
+      "type":"text",
+      "id":"paid_gift_button",
+      "label":"Button Text",
+      "default": "SELECT"
+    },
+    {
+      "type":"text",
+      "id":"paid_gift_button_remove",
+      "label":"Button Text (Remove)",
+      "default": "x REMOVE"
+      }
+	
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,256 @@
+<!-- DO NOT REMOVE THE FOLLOWING COMMENT -->
+<!-- (c) Copyright 2014 Caroline Hill. All Rights Reserved. Contact Mlle Caroline Schnapp at mllegeorgesand@gmail.com -->
+<!-- DO NOT REMOVE THE ABOVE COMMENT -->
+
+{% if linklists.gift-wrapping.links.size > 0 and linklists.gift-wrapping.links.first.type == 'product_link' %}
+
+  <div id="is-a-gift" style="clear: left; margin: 30px 0" class="clearfix rte">
+    <h3>Gift Wrapping & Message</h3>
+    <div class="gift-wrapping__wrapper">
+      {% if section.settings.free_gift_enabled %}
+      <div class="gift-wrapping__container">
+        {% assign free_gift_image = 'Gift_Concierge.png' | asset_img_url: '84x' %}
+        {% if section.settings.free_gift_image %}
+        {% assign free_gift_image = section.settings.free_gift_image | img_url: '84x' %}
+        {% endif %}
+        <div><img src="{{ free_gift_image }}" class="icon"></div>
+        {% if section.settings.free_gift_title != blank %}<h4>{{section.settings.free_gift_title}}</h4>{% endif %}
+        <input
+               class="gift-wrapping__check"
+               id="free-gift-wrapping"
+               type="checkbox"
+               name="attributes[free-gift-wrapping]"
+               value="yes"
+               {% if cart.attributes.free-gift-wrapping %} checked="checked"{% endif %}
+               style="float: none"
+               {% unless cart.attributes.free-gift-wrapping %} disabled {% endunless %} />
+        <label for="free-gift-wrapping">
+          {{section.settings.free_gift_text}}
+        </label>
+        <button
+                class="button gift-wrapping__button {% if cart.attributes.free-gift-wrapping %} gift-wrapping__button--selected{% endif %}"
+                data-input="free-gift-wrapping"
+                data-note="free-gift-note">
+          {% if cart.attributes.free-gift-wrapping %}{{section.settings.free_gift_button_remove}}{% else %}{{section.settings.free_gift_button}}{% endif %}
+        </button>
+
+        {% if cart.attributes.free-gift-wrapping != blank %}
+        <div class="gift-wrap__bottom">
+        <div class="gift-wrap__bottomBox" {% if cart.attributes.free-gift-note %}style="display: none"{% endif %}>
+          <label for="gift-note">{{ 'cart.note' | t }}</label>
+          <textarea
+                    name="attributes[free-gift-note]"
+                    id="free-gift-note"
+                    {% unless cart.attributes.free-gift-wrapping %} disabled {% endunless %}>{{ cart.attributes.free-gift-note }}</textarea>
+                  </div>
+          <button class="button" id="editmsg_button" type="button" {% unless cart.attributes.free-gift-note %}style="display: none;"{% endunless %}>Edit Message</button>
+          <button class="button" id="save_button" type="button"{% if cart.attributes.free-gift-note %}style="display: none;"{% endif %}>Save</button>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+	  {% if section.settings.paid_gift_enabled %}
+      <div class="gift-wrapping__container">
+        {% assign paid_gift_image = 'Gift_Concierge.png' | asset_img_url: '84x' %}
+        {% if section.settings.paid_gift_image %}
+        {% assign free_gift_image = section.settings.paid_gift_image | img_url: '84x' %}
+        {% endif %}
+        <div><img src="{{ 'Gift_Concierge.png' | asset_img_url: '84x' }}" class="icon"></div>
+        {% if section.settings.paid_gift_title != blank %}<h4>{{section.settings.paid_gift_title}}</h4>{% endif %}
+        <input
+               class="gift-wrapping__check"
+               id="paid-gift-wrapping"
+               type="checkbox"
+               name="attributes[paid-gift-wrapping]"
+               value="yes"
+               {% if cart.attributes.paid-gift-wrapping %} checked="checked"{% endif %}
+               style="float: none"
+               {% unless cart.attributes.paid-gift-wrapping %} disabled {% endunless %} />
+        <label for="paid-gift-wrapping">
+          {% assign paid_gift_price = linklists.gift-wrapping.links.first.object.price | money %}
+          {{section.settings.paid_gift_text | replace: "<price>", paid_gift_price}}
+        </label>
+        <button
+                class="button gift-wrapping__button {% if cart.attributes.paid-gift-wrapping %} gift-wrapping__button--selected{% endif %}"
+                data-input="paid-gift-wrapping"
+                data-note="paid-gift-note">
+          {% if cart.attributes.paid-gift-wrapping %}{{section.settings.paid_gift_button_remove}}{% else %}{{section.settings.paid_gift_button}}{% endif %}
+        </button>
+        {% if cart.attributes.paid-gift-wrapping != blank %}
+        <div class="gift-wrap__bottom">
+          <label for="gift-note">{{ 'cart.note' | t }}</label>
+          <textarea
+                    name="attributes[gift-note]"
+                    id="paid-gift-note"
+                    {% unless cart.attributes.paid-gift-wrapping %} disabled {% endunless %}>{{ cart.attributes.paid-gift-note }}</textarea>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+<script>
+  (function(){
+    //when clicking the gift button, click on the checkbox for that gift option
+    let giftButtons = document.querySelectorAll('.gift-wrapping__button');
+    giftButtons.forEach(function(button){
+      var input = button.dataset.input;
+      //console.log(input);
+      button.addEventListener('click',function(e){
+        e.preventDefault();
+        let inputEl = document.getElementById(input);
+        //console.log(input,inputEl);
+        inputEl.removeAttribute('disabled')
+        inputEl.click();
+      });
+    });
+
+
+  })();
+</script>
+
+
+{% assign id = linklists.gift-wrapping.links.first.object.variants.first.id %}
+
+{% assign gift_wraps_in_cart = 0 %}
+{% for item in cart.items %}
+  {% if item.id == id %}
+    {% assign gift_wraps_in_cart = item.quantity %}
+  {% endif %}
+{% endfor %}
+
+<style>
+  #updates_{{ id }} { display: none; }
+</style>
+
+<script>
+
+Shopify.Cart = Shopify.Cart || {};
+
+Shopify.Cart.GiftWrap = {};
+
+Shopify.Cart.GiftWrap.set = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js',
+    data: { updates: { {{ id }}: 1 }, attributes: { 'paid-gift-wrapping': true, 'free-gift-wrapping': '' }, "note":null },
+    dataType: 'json',
+    success: function() {
+      location.href = '/cart';
+    }
+  });
+}
+
+Shopify.Cart.GiftWrap.remove = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js',
+    data: { updates: { {{ id }}: 0 }, attributes: { 'paid-gift-wrapping': '' } },
+    dataType: 'json',
+    success: function() {
+      location.href = '/cart';
+      }
+  });
+}
+
+// If we have nothing but gift-wrap items in the cart.
+{% if cart.items.size == 1 and gift_wraps_in_cart > 0 %}
+jQuery(function() {
+  Shopify.Cart.GiftWrap.remove();
+});
+// If we have more than one gift-wrap item in the cart.
+{% elsif gift_wraps_in_cart > 1 %}
+jQuery(function() {
+  Shopify.Cart.GiftWrap.set();
+});
+// If we have a gift-wrap item in the cart but our gift-wrapping cart attribute has not been set.
+{% elsif gift_wraps_in_cart > 0 and cart.attributes.paid-gift-wrapping == blank  %}
+jQuery(function() {
+  Shopify.Cart.GiftWrap.set();
+});
+// If we have no gift-wrap item in the cart but our gift-wrapping cart attribute has been set.
+{% elsif gift_wraps_in_cart == 0 and cart.attributes.paid-gift-wrapping != blank  %}
+jQuery(function() {
+  Shopify.Cart.GiftWrap.set();
+});
+{% endif %}
+
+// When the gift-wrapping checkbox is checked or unchecked.
+jQuery(function() {
+  jQuery('[name="attributes\[paid-gift-wrapping\]"]').change(function() {
+    if (jQuery(this).is(':checked')) {
+      jQuery('[data-input="paid-gift-wrapping"]').html("<em class='fa fa-spinner' style='animation: spin 2s linear infinite;'></i>");
+      Shopify.Cart.GiftWrap.set();
+    } else {
+      jQuery('[data-input="paid-gift-wrapping"]').html("<em class='fa fa-spinner' style='animation: spin 2s linear infinite;'></i>");
+      Shopify.Cart.GiftWrap.remove();
+    }
+  });
+
+  jQuery('[name="attributes\[free-gift-wrapping\]"]').change(function() {
+    if (jQuery(this).is(':checked')) {
+      jQuery('[data-input="free-gift-wrapping"]').html("<em class='fa fa-spinner' style='animation: spin 2s linear infinite;'></i>");
+      jQuery.ajax({
+        type: 'POST',
+        url: '/cart/update.js',
+        data: { updates: { {{ id }}: 0 }, attributes: { 'free-gift-wrapping': true, 'paid-gift-wrapping': '' }, "note":null },
+        dataType: 'json',
+        success: function() {  location.href = '/cart'; }
+      });
+    } else {
+      jQuery('[data-input="free-gift-wrapping"]').html("<em class='fa fa-spinner' style='animation: spin 2s linear infinite;'></i>");
+      jQuery.ajax({
+        type: 'POST',
+        url: '/cart/update.js',
+        data: { updates: {  }, attributes: { 'free-gift-wrapping': '','free-gift-note': '' } },
+        dataType: 'json',
+        success: function() { location.href = '/cart'; }
+      });
+    }
+  });
+});
+
+</script>
+
+{% else %}
+
+<p style="clear: left; margin: 30px 0" class="rte">
+  You attempted to add a gift-wrapping script to your shopping cart, but it won't work because you don't have
+  a link list with handle <code>gift-wrapping</code> which, in turn, contains a link
+  to your gift-wrapping product. Please review the steps outlined
+  <a href="http://docs.shopify.com/manual/configuration/store-customization/page-specific/cart-page/add-a-gift-wrap-option">here</a>.
+</p>
+
+{% endif %}
+
+<script>
+  var $save_button  = jQuery('#save_button'),
+      $txtarea = jQuery('#free-gift-note');
+      jQuery('#editmsg_button').click(function() {
+            jQuery('.gift-wrap__bottomBox').slideDown();
+            jQuery('#save_button').show();
+            jQuery('#editmsg_button').hide();
+      });
+      jQuery($save_button).click(function() {
+        jQuery(this).html("<em class='fa fa-spinner' style='animation: spin 2s linear infinite;'></i>");
+        var newVal = $txtarea.val();
+        jQuery.ajax({
+          type: 'POST',
+          url: '/cart/update.js',
+          data: {
+            attributes: {
+              'free-gift-note': newVal
+            }
+          },
+          dataType: 'json',
+          success: function () {
+            jQuery('.gift-wrap__bottomBox').slideUp();
+            jQuery('#save_button').hide().text('SAVE');
+            jQuery('#editmsg_button').show();
+          }
+        });
+      });
+</script>

@@ -1,0 +1,37 @@
+<div class="page-width">
+  <div class="page-inner-width">
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+        <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
+      </div>
+    {% endif %}
+    {{ section.settings.custom_liquid }}
+  </div>
+  </div>
+
+{% schema %}
+{
+  "name": "Product review",
+  "tag": "section",
+  "class": "section-product-review spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Logo list with text"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+      "default": "<!--Stamped - Begin Main Widget -->\n<div \nid=\"stamped-main-widget\"   \ndata-product-id=\"{{ product.id }}\"   \ndata-name=\"{{ product.title | escape }}\"   \ndata-url=\"{{ shop.url }}{{ product.url }}\"   \ndata-image-url=\"{{ product.featured_image | product_img_url: \"large\" |replace: '?', '%3F' | replace: '&','%26'}}\" \ndata-description=\"{{ product.description | escape }}\"   \ndata-product-sku=\"{{product.handle}}\"\ndata-product-title=\"{{product.title}}\" \ndata-product-type=\"{{product.type}}\">   \n{{product.metafields.stamped.reviews}}   \n<\/div>\n<!-- Stamped - End Main Widget -->"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product review"
+    }
+  ]
+}
+{% endschema %}

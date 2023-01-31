@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+  }
+  .wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0px 0px;
+    background: #F7F7F7;
+}
+.wrapper .hr {
+    height: 1px;
+    background-color: #4443;
+    width: 30%;
+    display: block!important;
+    margin: 20px 0 30px;
+    text-align: center;
+    margin: 27px auto;
+    width: 200px;
+}
+  .wrapper .h2-heading
+  {
+    color:#E48A59;
+    text-align: center;
+  }
+  .tab-link {
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    color: #7FB1B4;
+    font-weight: 600;
+    padding: 2rem 0px;
+    margin-bottom: -2px;
+/*     display: flex !important;
+    align-items: center; */
+    text-align: center;
+    height:85px !important;
+}
+  .tabs {
+    position: relative;
+    padding: 0;
+    margin: 20px 0px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border-bottom: 2px solid rgba(112 112 112/20%);
+    justify-content: space-around;
+}
+.tab-content
+{
+display: none;
+text-align: center;
+color: #888;
+font-weight: 300;
+font-size: 15px;
+opacity: 0;
+transform: translateY(15px);
+animation: fadeIn 0.5s ease 1 forwards;
+}
+.tab-link.active
+{
+    border-bottom: 3px solid #444444;
+}
+.tab-content.active
+{
+	display: block;
+}
+@keyframes fadeIn{
+	100%{
+		opacity: 1;
+		transform: none;
+    }
+}
+.content-wrapper {
+    padding: 50px 0px;
+}
+.content-wrapper .tab-content .faq-block {
+    text-align: left;
+    padding-bottom: 20px;
+}
+.content-wrapper .tab-content .faq-block >h3
+{
+    font-size: 18px;
+    color: #E48A59;
+}
+.content-wrapper .tab-content .faq-block >p
+{
+    font-size: 16px;
+}
+.block-images {
+    float: right;
+    padding-left: 100px;
+    max-width: 50%;
+    
+}
+.block-images img
+{
+    height: auto;
+}
+.clear-flex {
+    clear: both;
+    display: table !important;
+    content: '';
+}
+@media screen and (max-width: 991px) {
+ .content-wrapper {
+    padding: 15px 0;
+  }
+  .block-images {
+    padding-left: 50px;
+    }
+
+@media screen and (max-width: 750px) 
+{
+  .block-images {
+    float: none;
+    padding-left: 0px;
+    max-width: 100%;
+    width:100%;
+  }
+  .content-wrapper .tab-content .faq-block {
+    padding: 0px 15px;
+    padding-bottom: 20px;	
+	}
+  	.tab-content {
+    margin: 0px -15px;
+  	}
+    .wrapper {
+    width: 100%;
+    margin: 0 auto;
+      margin-top: -30px;
+    padding: 40px 0 0;
+	}
+}

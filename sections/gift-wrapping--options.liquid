@@ -1,0 +1,88 @@
+
+{% schema %}
+  {
+    "name": "Gift Wrapping Options",
+    "settings": [
+	  {
+		"type":"checkbox",
+		"id":"enabled",
+		"label":"Enable Gift Wrapping",
+		"default":true,
+		"info":"Only displayed when there are items in the cart"
+ 	  },
+	  {
+		"type":"header",
+		"content":"Free Gift Wrapping"
+	  },
+	  {
+		"type":"checkbox",
+		"id":"free_gift_enabled",
+		"label":"Enable",
+		"default":true
+ 	  },
+	  {
+		"type":"text",
+		"id":"free_gift_title",
+		"label":"Title"
+	  },
+	  {
+		"type":"text",
+		"id":"free_gift_text",
+		"label":"Description"
+	  },
+ 	  {
+		"type":"image_picker",
+		"id":"free_gift_image",
+		"label":"Image",
+		"info":"Leave empty for default icon"
+	  },
+ 	  {
+		"type":"text",
+		"id":"free_gift_button",
+		"label":"Button Text"
+	  },
+ 	  {
+		"type":"text",
+		"id":"free_gift_button_remove",
+		"label":"Button Text (Remove)"
+	  },
+	  {
+		"type":"header",
+		"content":"Paid Gift Wrapping"
+	  },
+	  {
+		"type":"text",
+		"id":"paid_gift_title",
+		"label":"Title"
+	  },
+	  {
+		"type":"checkbox",
+		"id":"paid_gift_enabled",
+		"label":"Enable",
+		"default":true
+ 	  },
+	  {
+		"type":"text",
+		"id":"paid_gift_text",
+		"label":"Description"
+	  },
+ 	  {
+		"type":"image_picker",
+		"id":"paid_gift_image",
+		"label":"Image",
+		"info":"Leave empty for default icon"
+	  },
+ 	  {
+		"type":"text",
+		"id":"paid_gift_button",
+		"label":"Button Text"
+	  },
+ 	  {
+		"type":"text",
+		"id":"paid_gift_button_remove",
+		"label":"Button Text (Remove)"
+	  }
+	 
+	]
+  }
+{% endschema %}

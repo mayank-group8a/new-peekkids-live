@@ -1,0 +1,36 @@
+<product-card-form class="product-form hidden">
+  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+      <label>
+          <span class="visually-hidden">ProductSelect-{{ section.id }}</span>
+          <select name="id" class="product-form__variants hidden">
+      {% for variant in product.variants %}
+        <option value="{{ variant.id }}"
+          data-variant-quantity="{{ variant.inventory_quantity }}"
+          {%- if variant == current_variant %} selected="selected" {%- endif -%}
+        >
+          {{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+        </option>
+      {% endfor %}
+    </select>
+      </label>
+    <div class="product-form__buttons">
+      <button
+                      type="submit"
+                      onclick="gtag_report_conversion();"
+                      name="add"
+                      class="product-form__submit button button--full-width {% if settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                  >
+                      {%- if product.selected_or_first_available_variant.available -%}
+                          {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                          {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                  </button>
+      {%- if settings.show_dynamic_checkout -%}
+        {{ form | payment_button }}
+      {%- endif -%}
+      </div>
+  {%- endform -%}
+</product-card-form>

@@ -1,0 +1,257 @@
+<div
+    id="logobarSection-{{ section.id }}"
+    data-section-id="{{ section.id }}"
+    data-section-type="logo-bar-with-text">
+  <div class="page-width">
+  <div class="page-inner-width">
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+        <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
+      </div>
+    {% endif %}
+  
+    {% if section.blocks.size > 0 %}
+      <div class="logo-bar{% if section.settings.title_enable %} logo-bar--large{% endif %} slider"
+      {%- if section.settings.desktopInit or section.settings.tabInit or section.settings.mobileInit -%}
+      data-slickslider="true"
+      data-slick-autoplay="{{ section.settings.autoplay }}"
+      data-slick-autoplayspeed="{{ section.settings.autorotate_speed | times: 1000 }}"
+      data-slick-infinite="{{ section.settings.sliderLoop }}"
+      data-slick-pauseonhover="{{ section.settings.pauseOnHover }}"
+  
+      data-slick-desktop-init="{{ section.settings.desktopInit }}"
+      data-slick-desktop-show="{{ section.settings.desktopShow }}"
+      data-slick-desktop-arrows="{{ section.settings.desktopArrows }}"
+      data-slick-desktop-dots="{{ section.settings.desktopDots }}"
+      data-slick-desktop-vertical="false"
+  
+      data-slick-tab-init="{{ section.settings.tabInit }}"
+      data-slick-tab-show="{{ section.settings.tabShow }}"
+      data-slick-tab-arrows="{{ section.settings.tabArrows }}"
+      data-slick-tab-dots="{{ section.settings.tabDots }}"
+      data-slick-tab-vertical="false"
+  
+      data-slick-mobile-init="{{ section.settings.mobileInit }}"
+      data-slick-mobile-show="{{ section.settings.mobileShow }}"
+      data-slick-mobile-arrows="{{ section.settings.mobileArrows }}"
+      data-slick-mobile-dots="{{ section.settings.mobileDots }}"
+      data-slick-mobile-vertical="false"
+      {%- endif -%}>
+        {% for block in section.blocks %}
+          <div class="logo-bar__item{% if section.settings.title_enable %} logo-bar__item--large{% endif %}" {{ block.shopify_attributes }}>
+            <div class="logo-bar-item-innter">
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" class="logo-bar__link">
+            {% endif %}
+            {% if block.settings.image != blank %}
+                <div class="logoWrap">
+                  {{ block.settings.image | img_url: '225x225', scale: 2 | img_tag: block.settings.image.alt, 'logo-bar__image' }}
+                </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            {% if block.settings.title != blank %}<h6>{{ block.settings.title }}</h6>{% endif %}
+            {% if block.settings.text != blank %}<div class="rte">{{ block.settings.text }}</div>{% endif %}
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+  </div>
+  </div>
+  </div>
+{% schema %}
+{
+  "name": "Logo list with text",
+  "class": "index-section logo-bar-with-text",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Logo list with text"
+    },
+    {
+        "type": "header",
+        "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autorotate_speed",
+      "label": "Change slides every",
+      "max": 10,
+      "min": 1,
+      "step": 1,
+      "unit": " s",
+      "default": 3
+    },
+    {
+        "type": "checkbox",
+        "id": "sliderLoop",
+        "label": "Infinite loop sliding",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "pauseOnHover",
+        "label": "Pause on Hover",
+        "default": false
+    },
+    {
+        "type": "header",
+        "content": "Desktop Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "desktopInit",
+        "label": "Enable Slider in Desktop",
+        "default": true
+    },
+    {
+        "type": "range",
+        "id": "desktopShow",
+        "label": "Show",
+        "default": 4,
+        "max": 8,
+        "min": 1,
+        "step": 1
+    },
+    {
+        "type": "checkbox",
+        "id": "desktopArrows",
+        "label": "Arrows",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "desktopDots",
+        "label": "Dots",
+        "default": false
+    },
+    {
+        "type": "header",
+        "content": "Tablet Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "tabInit",
+        "label": "Enable slider in tablet",
+        "default": true
+    },
+    {
+        "type": "range",
+        "id": "tabShow",
+        "label": "Show",
+        "default": 3,
+        "max": 6,
+        "min": 1,
+        "step": 1
+    },
+    {
+        "type": "checkbox",
+        "id": "tabArrows",
+        "label": "Arrows",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "tabDots",
+        "label": "Dots",
+        "default": false
+    },
+    {
+        "type": "header",
+        "content": "Mobile Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "mobileInit",
+        "label": "Enable slider in Mobile",
+        "default": true
+    },
+    {
+        "type": "range",
+        "id": "mobileShow",
+        "label": "Show",
+        "default": 2,
+        "max": 6,
+        "min": 1,
+        "step": 1
+    },
+    {
+        "type": "checkbox",
+        "id": "mobileArrows",
+        "label": "Arrows",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "mobileDots",
+        "label": "Dots",
+        "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name":"Logo",
+      "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Recommended size 60x60"
+      },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "title"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo list with text",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

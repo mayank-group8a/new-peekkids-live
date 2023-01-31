@@ -1,0 +1,205 @@
+
+
+<details-disclosure>
+    <details class="mega-nav">
+      <summary class="header__menu-item list-menu__item link focus-inset"  data-link="{{ link.title | escape | handle }}">
+        <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+        {% render 'icon-caret' %}
+      </summary>
+      <div class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+          <div class="page-width">
+      <div class="megamenu-container">
+        {% for block in section.blocks %}
+          {%- if link.title == block.settings.mega_menu -%}
+            <div class="site-nav__childlist-grid">
+        <!-- Block Link list -->
+      {%- for i in (1..4) -%}
+      {%- liquid
+        assign menu = 'submenu_link_' | append : i
+        assign title = 'submenu_title_' | append : i
+        assign submenu = 'submenu_' | append : i
+        assign colspan = 'colspan_' | append : i
+          -%}
+          {%- if block.settings[menu] != blank and block.settings[submenu] -%}
+          <div class="site-nav__childlist-item site-nav__childlist-item-linklist{% if block.settings[colspan]%} site-nav__colspan{% endif %}">
+            <div class="nav_menu">
+                <div class="h4 nav_menutitle">{{ block.settings[title] }}</div>
+                <ul class="menu list-menu">
+                    {%- assign links = block.settings[menu] -%}
+                    {% for i in linklists[links].links limit: block.settings.linksLimits %}
+                    <li class="menu-item {% if i.active %}active{% endif %}">
+                        <a class="header__menu-item list-menu__item link link--text focus-inset caption-large" href="{{ i.url }}">{{ i.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+            {%- endif -%}
+            {% endfor %} 
+
+        <!-- End Block Link list -->
+        
+        
+        <!-- Block Product -->
+        {%- assign menutitle = false -%}
+        {%- capture productMenu -%}
+            <ul class="menu list-menu product-list-grid">
+                {% for i in (1..4) %}
+                {% assign product = 'submenu_product_' | append : i %}
+                {% if block.settings[product] != blank %}
+                {%- liquid
+                  assign menutitle = true
+                  assign p = block.settings[product]
+                  assign product = all_products[p]
+                -%}
+                <li class="list-view-item">
+                    <div class="product-card product-card--list">
+                        <a class="list-view-item__link" href="{{ product.url | within: collection }}">
+                          <div class="list-view-item__image-column">
+                            <div class="list-view-item__image-wrapper product-card__image-wrapper">
+                            {% unless product.featured_media == null %}
+                              <img class="list-view-item__image" 
+                              src="{{ product.featured_media | img_url: 'master' }}"
+                              width="{{ article.image.width }}"
+                              height="{{ article.image.height }}"
+                              loading="lazy"
+                              alt="{{ product.featured_media.alt }}">
+                            {% endunless %}
+                            </div>
+                          </div>
+                      
+                          <div class="list-view-item__title-column">
+                            <div class="list-view-item__title h4" aria-hidden="true">
+                              <span class="product-card__title">{{ product.title }}</span>
+                            </div>
+                            {% render 'price' product: product %}
+                            {% if show_vendor %}
+                              <div class="list-view-item__vendor">{{ product.vendor }}</div>
+                            {% endif %}
+                          </div>
+                        </a>
+                      </div>
+                      
+                    </li>
+
+
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {%- endcapture -%}
+            {%- if menutitle -%}
+            <div class="site-nav__childlist-item site-nav__childlist-item-product">
+            <div class="h4 nav_menutitle">{{ block.settings.product_list_title }}</div>
+            {{ productMenu}}
+            </div>
+            {%- endif -%}
+        <!-- End Block Product -->
+
+
+
+        {% if block.settings['banner1'] != blank and block.settings.bannerShow1 %}
+        <div class="site-nav__childlist-item site-nav__childlist-item-banner">
+        {%- liquid
+            assign image = block.settings['banner1']
+            assign url = block.settings['banner_url1']
+            -%}
+            {%- if block.settings.banner_title_1 != blank-%}
+            <div class="h4 nav_menutitle">{{ block.settings.banner_title_1 }}</div>
+            {%- endif -%}
+           <a href="{{ url }}" target="_self" class="">
+            <img
+            src="{{ image.src | img_url: 'master' }}"
+            alt="{{ image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+            class="motion-reduce"
+          >
+            <span class="shopNow">SHOP NOW</span>
+            </a>
+
+        </div>
+        {% endif %}
+ 
+        {% if block.settings['banner_image_2'] != blank or block.settings['banner_image_Show2']  
+        or block.settings['banner_image_3'] != blank or block.settings['banner_image_Show3'] 
+     %}
+     
+         {% if block.settings['banner_image_2'] != blank and block.settings['banner_image_Show2'] %}
+         <div class="site-nav__childlist-item site-nav__childlist-item-banner">
+             {%- liquid
+              assign image = block.settings['banner_image_2']
+              assign url = block.settings['banner_url_2']
+              -%}
+              {%- if block.settings.banner_title_2 != blank-%}
+                <div class="h4 nav_menutitle">{{ block.settings.banner_title_2 }}</div>
+                {%- endif -%}
+                 <a href="{{ url }}" target="_self" class="">
+                <img
+                src="{{ image.src | img_url: 'master' }}"
+                alt="{{ image.src.alt | escape }}"
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+                loading="lazy"
+                class="motion-reduce"
+              >
+                <span class="shopNow">SHOP NOW</span>
+                </a>
+            </div>
+            {% endif %}
+            {% if block.settings['banner_image_3'] != blank and block.settings['banner_image_Show3'] %}
+            <div class="site-nav__childlist-item site-nav__childlist-item-banner">
+                {%- liquid
+                    assign image = block.settings['banner_image_3']
+                    assign url = block.settings['banner_url_3']
+                    -%}
+                    {%- if block.settings.banner_title_3 != blank-%}
+                      <div class="h4 nav_menutitle">{{ block.settings.banner_title_3 }}</div>
+                      {%- endif -%}
+          
+                    <a href="{{ url }}" target="_self" class="">
+                        <img
+               src="{{ image.src | img_url: 'master' }}"
+               alt="{{ image.src.alt | escape }}"
+               width="{{ article.image.width }}"
+               height="{{ article.image.height }}"
+               loading="lazy"
+               class="motion-reduce"
+             >
+              <span class="shopNow">SHOP NOW</span>
+                    </a>
+         </div>             
+         {% endif %}
+         {% if block.settings['banner_image_4'] != blank and block.settings['banner_image_Show4'] %}
+          <div class="site-nav__childlist-item site-nav__childlist-item-banner">
+              {%- liquid
+                  assign image = block.settings['banner_image_4']
+                  assign url = block.settings['banner_url_4']
+                  -%}
+                  {%- if block.settings.banner_title_4 != blank-%}
+                    <div class="h4 nav_menutitle">{{ block.settings.banner_title_4 }}</div>
+                    {%- endif -%}
+        
+                  <a href="{{ url }}" target="_self" class="">
+                      <img
+             src="{{ image.src | img_url: 'master' }}"
+             alt="{{ image.src.alt | escape }}"
+             width="{{ image.width }}"
+             height="{{ image.height }}"
+             loading="lazy"
+             class="motion-reduce"
+           >
+            <span class="shopNow">SHOP NOW</span>
+                  </a>
+       </div>             
+       {% endif %}
+        {% endif %}
+      </div>
+    {%- endif -%}
+
+        {%- endfor -%}
+      </div>
+      </div>
+    </div>
+    </details>
+  </details-disclosure>

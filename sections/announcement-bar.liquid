@@ -1,0 +1,188 @@
+{{ 'component-announcement-bar.css' | asset_url | stylesheet_tag }}
+{% comment %} announcementcolor_text {% endcomment %}
+<style>
+  #shopify-section-announcement-bar .announcement-bar {
+    background-color: {{ settings.announcementcolor_bg }};
+    color: {{ settings.announcementcolor_text }};
+  }  
+  #shopify-section-announcement-bar .announcement-bar  .announce-text
+  {
+    background-color: {{ settings.announcementcolor_bg }};
+    color: {{ settings.announcementcolor_text }};
+  }  
+</style>
+{% if settings.announcementhome_page_only == false or request.page_type == 'index' %}
+  <div class="announcement-bar announcement-bar-position-{{ settings.announcementposition }}{% for block in section.blocks %}{% if block.type == 'advanced' and block.settings.amout_1 %} advancedActive{% endif %}{% endfor %}" data-position="{{ settings.announcementposition }}"
+    data-section-id="{{ section.id }}" data-section-type="announcement-bar"
+  >
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'advanced' and block.settings.amout_1 -%}
+    <div id="announcementAdvanced">
+      <div class="announcementAdvanced announcement-bar__message announcement-bar__message-text">
+        {%- unless block.settings.announcement_link == blank -%}
+        <a href="{{ block.settings.announcement_link }}" class="announcement-bar__link">{%- endunless -%}
+          {%- assign ammountOffer = block.settings.amout_offer_1 | money -%}
+          {%- capture ammountoffer -%}
+          {%- if  cart.items_subtotal_price == 0 -%}
+          
+          {{ block.settings.text_offer_1 | replace: "[[ count ]]", ammountOffer }}
+           {%- elsif cart.items_subtotal_price > 0 and cart.items_subtotal_price < block.settings.amout_offer_1-%}
+
+           {%- assign ammountOffer = block.settings.amout_offer_1 | minus: cart.items_subtotal_price | money -%}
+           {{ block.settings.text_offer_away_1 | replace: "[[ count ]]", ammountOffer }}
+           {%- else  -%}
+           {{ block.settings.text_offer_qualified_1 }}
+          {%- endif -%}
+
+            
+          {%- endcapture -%}
+          <span class="announce-text">{{ ammountoffer }}</span>
+         
+        {%- unless block.settings.announcement_link == blank -%}</a>{%- endunless -%}
+        </div>
+    </div>
+    {%- endif -%}
+    {%- endfor -%}
+    <div id="{{ section.id }}" class="{% if settings.announcementmessage_slider %}announcement-bar-slider{% endif %}" 
+    role="region" aria-label="{{ 'sections.header.announcement' | t }}"
+      {% if settings.announcementmessage_slider %}
+      data-slickslider="{{ settings.announcementmessage_slider }}"
+      data-slider-autoplay="{{ settings.announcementautoplay }}"
+      data-slider-autoplaySpeed="{{ settings.announcementautorotate_speed | times: 1000 }}"
+      data-slider-infinite="{{ settings.announcementsliderLoop }}"
+      data-slider-arrows="{{ settings.announcementarrows }}"
+      data-slider-fade="{{ settings.announcementfade }}"
+      data-slick-desktop-init="true"
+      data-slick-desktop-show="1"
+      data-slick-desktop-arrows="true"
+      data-slick-desktop-dots="false"
+      data-slick-desktop-vertical="false"
+      {% endif %}
+      data-block-count="{{ section.blocks.size }}"
+      data-compact-style="true">
+      {% for block in section.blocks %}
+        {%- if block.type == 'text' -%}
+        <div id="AnnouncementSlide-{{ block.id }}"
+        class="announcement-bar__message  announcement-bar__message-text announcement-slider__slide" 
+        data-index="{{ forloop.index0 }}"
+        >
+          {%- unless block.settings.announcement_link == blank -%}
+          <a href="{{ block.settings.announcement_link }}" class="announcement-bar__link">
+            {%- endunless -%}
+            <span class="announce-text web-announce-text small-hide">{{ block.settings.announcement_text }}</span>
+            <span class="announce-text mobile-announce-text medium-hide large-up-hide">{{ block.settings.announcement_text_mobile }}</span>
+            {%- unless block.settings.announcement_link == blank -%}
+          </a>
+          {%- endunless -%}
+        </div>
+        {%- endif -%}
+        {% endfor %}
+      </div>
+       
+      </div>
+  {% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+      {
+          "type": "header",
+          "content": "Announcement bar",
+          "info": "For this section setting go to Theme settings > Announcement bar"
+      }
+  ],
+  "blocks": [
+      {
+          "type": "advanced",
+          "name": "Advanced Announcement",
+          "limit": 1,
+          "settings": [
+          {
+              "type": "url",
+              "id": "announcement_link",
+              "label": "Announcement Link",
+              "default": "\/collections\/all"
+          },
+          {
+              "type": "header",
+              "content": "Offers",
+              "info": "Add price 9999 formate for $99.99 and 10000 for the $100.00"
+          },
+          {
+              "type": "header",
+              "content": "Offer 1"
+          },
+          {
+              "type": "checkbox",
+              "id": "amout_1",
+              "label": "Enable offer",
+              "default": true
+          },
+          {
+              "type": "number",
+              "id": "amout_offer_1",
+              "label": "Amout Of Offer",
+              "default": 5000
+          },
+          {
+              "type": "textarea",
+              "id": "text_offer_1",
+              "label": "Promotion Message",
+              "default": "Free shipping for orders over <span class=\"count\">[[ count ]]<\/span>.",
+              "info": "Add Message like: Free shipping for orders over <span class=\"count\">[[ count ]]<\/span>."
+          },
+          {
+              "type": "textarea",
+              "id": "text_offer_away_1",
+              "label": "Promotion away Message",
+              "default": "You are <span class=\"count\">[[ count ]]<\/span> away from Free shipping.",
+              "info": "Add message like: You are <span class=\"count\">[[ count ]]<\/span> away from Free shipping."
+          },
+          {
+              "type": "textarea",
+              "id": "text_offer_qualified_1",
+              "label": "Promotion Qualified Message",
+              "default": "Congratulations! You've got free shipping"
+          }
+          ]
+      },
+      {
+          "type": "text",
+          "name": "Announcement Text",
+          "settings": [
+              {
+                  "type": "text",
+                  "id": "announcement_text",
+                  "label": "Announcement Text",
+                  "default": "Announcement Text - 1"
+                },
+                {
+                  "type": "text",
+                  "id": "announcement_text_mobile",
+                  "label": "Announcement Text Mobile",
+                  "default": "Announcement Text Mobile - 1"
+              },
+              {
+                  "type": "url",
+                  "id": "announcement_link",
+                  "label": "Announcement Link"
+              }
+          ]
+      }        
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "advanced"
+      },
+      {
+        "type": "text"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+/* This file forces color contrast on various elements to meet WCAG regulations */
+
+
+.product_list .menu-content-item  .menu-items ul li.menu-title-list_active,
+.sidebar-wrap .sidebar ul.sidebar-menu.list-menu>li>a,
+.boost-pfs-filter-option-title-heading span,
+.boost-pfs-filter-default-toolbar .boost-pfs-filter-top-sorting label,
+.product__title,
+.product-form__input .form__label,
+div#breadcrumb span,
+.product-recommendations__heading,
+.section-product-review .section-header .title,
+.product-form__input input[type=radio]:checked+label,
+.product .product__info-wrapper .product-form__input.product-form__quantity .quantity .quantity__button,
+.swym-btn-container .swym-add-to-wishlist,
+.swym-btn-container .swym-add-to-wishlist:after,
+.swym-btn-container .swym-fave-count,
+.price__sale span.price-item.price-item--sale,
+.accordion summary .icon-caret,
+details.mega-nav[open] summary,
+.header__menu-item:hover span,
+.header__submenu .menu-item .header__menu-item:hover,
+.pages .main-page-title,
+.qv-product-options .product-single__swatch__item input[type=radio]:checked+label,
+#quick-view .view-productWrap a,
+.qv-content .product-form__input.product-form__quantity label .quantity .quantity__button,
+.qv-product-thumb-images.slick-initialized.slick-slider.slick-dotted.slick-vertical .slick-arrow.slick-prev svg,
+.qv-product-thumb-images.slick-initialized.slick-slider.slick-dotted.slick-vertical .slick-arrow.slick-next svg,
+#quick-view h1.qv-product-title,
+.product-form__controls-group .qv-product-options .option-selection .option,
+cart-items h1.title,
+.shipping-taxes-notification a,
+#is-a-gift h3,
+.customer h1,
+.menu-drawer summary.menu-drawer__menu-item svg.icon.icon-caret,
+.menu-drawer__utility-links .menu-drawer__phone.link.link--text svg.icon-caret,
+details.menu-drawer-container.menu-opening svg.icon.icon-close {
+    color: #0F716D !important;
+}
+
+.newsletter__button,
+.stamped-summary-actions-clear,
+.stamped-summary-actions-mobile-filter,
+.stamped-summary-actions-newquestion,
+.stamped-summary-actions-newreview {
+    background-color: #0F716D !important;
+}
+
+.product-form__input input[type=radio]:checked+label,
+.boost-pfs-filter-tree-h .boost-pfs-filter-option-title-heading[aria-expanded=true]:before,
+.qv-product-options .product-single__swatch__item input[type=radio]:checked+label {
+    border-color: #0f716d!important;
+}
+.product-form__input_size.product-form__input input[type=radio]:checked+label{
+    background: #0f716d!important;
+    color: #fff !important;
+}
+span.price-item.price-item--sale {
+    color: #C34101 !important;
+}
+
+.footer-block__details-content .list-menu__item--link, .copyright__content a {
+    color: white !important;
+}
+
+.fancybox-button svg path,
+svg.icon-hamburger path,
+.search__button svg path{
+    fill: #0F716D !important;
+}

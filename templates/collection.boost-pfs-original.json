@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "collection-promotion": {
+      "type": "collection-promotions",
+      "disabled": true,
+      "blocks": {
+        "8ebcd618-0685-4418-8535-632d2d2369e6": {
+          "type": "sale_collection",
+          "settings": {
+            "promo_collection": "",
+            "sale_collection": "jeans",
+            "top_text": "Up to",
+            "middle_text": "50% off",
+            "bottom_text": "Select products",
+            "width": "100",
+            "color_tint": "#000000",
+            "color_tint_opacity": 0,
+            "boxed": false,
+            "framed": false
+          }
+        }
+      },
+      "block_order": [
+        "8ebcd618-0685-4418-8535-632d2d2369e6"
+      ],
+      "settings": {
+        "gutter_size": 20
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-boost-pfs-original",
+      "settings": {
+        "products_per_page": 16,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "collapse_on_larger_devices": false
+      }
+    }
+  },
+  "order": [
+    "collection-promotion",
+    "banner",
+    "product-grid"
+  ]
+}
